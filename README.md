@@ -27,11 +27,13 @@ Java developers building distributed systems (e.g., microservices, distributed d
                             to ensure accurate inventory and order processing.<br/><br/>
 <h3>Frameworks and Tools:</h3>
       Java developers can use frameworks like Spring Cloud, which provides tools and patterns for building distributed systems, and understand how these tools handle the          CAP theorem trade-offs.<br/><br/>
-In computer science, the CAP theorem, sometimes called CAP theorem model or Brewer's theorem after its originator, Eric Brewer, states that any distributed system or data store can simultaneously provide only two of three guarantees: consistency, availability, and partition tolerance (CAP).<br/>
+In computer science, the CAP theorem, sometimes called CAP theorem model or Brewer's theorem after its originator, Eric Brewer, states that any distributed system or data store can simultaneously provide only two of three guarantees: consistency, availability, and partition tolerance (CAP).<br>
 
 While you won't write "CAP theorem code" directly, understanding the theorem is crucial for making architectural and design decisions in distributed Java applications. You'll choose technologies and patterns based on your application's tolerance for consistency, availability, and network partitions.
 
 # 2. Consistency Models.
+Consistency models define how data is consistent across multiple nodes in a distributed system. They specify the guarantees that the system provides to clients regarding the order and visibility of writes. Consistency models are a contract between the system and the application, specifying the guarantees the system provides to clients regarding the order and visibility of writes.
+
 # 3. Distributed Systems Architectures.
 # 4. Socket Programming (TCP/IP and UDP).
 # 5. HTTP and RESTful APIs.
