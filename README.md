@@ -3,7 +3,7 @@ As a Senior Java Backend Developer, it will be good if you have an understanding
 # 1. CAP Theorem.
 As a Java developer working with distributed systems, understanding the CAP theorem is crucial because it highlights the fundamental trade-offs between Consistency, Availability, and Partition Tolerance.
 
-Consistency (C):
+<h2>Consistency (C):</h2>
   Every read operation returns the most recent write or an error, ensuring all nodes see the same data.
 Availability (A):
   Every request receives a response, even if some nodes are down, but the response might not be the latest data.
