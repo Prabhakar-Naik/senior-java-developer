@@ -23,7 +23,9 @@ As a Java developer working with distributed systems, understanding the CAP theo
     <h4>Social Media Application:</h4> Prioritize availability to ensure the application is always up and running, even if some nodes are down,
                               and accept some potential temporary inconsistencies.
     <h4>E-commerce Application:</h4> Prioritize both consistency and availability, with partition tolerance as a secondary concern,
-                            to ensure accurate inventory and order processing.
+                            to ensure accurate inventory and order processing.<br/><br/>
+<h3>Frameworks and Tools:</h3>
+      Java developers can use frameworks like Spring Cloud, which provides tools and patterns for building distributed systems, and understand how these tools handle the          CAP theorem trade-offs.<br/><br/>
 In computer science, the CAP theorem, sometimes called CAP theorem model or Brewer's theorem after its originator, Eric Brewer, states that any distributed system or data store can simultaneously provide only two of three guarantees: consistency, availability, and partition tolerance (CAP).
 
 # 2. Consistency Models.
