@@ -5,24 +5,24 @@ As a Java developer working with distributed systems, understanding the CAP theo
 
 <h2>Consistency (C):</h2>
   Every read operation returns the most recent write or an error, ensuring all nodes see the same data.
-Availability (A):
+<h2>Availability (A):</h2>
   Every request receives a response, even if some nodes are down, but the response might not be the latest data.
-Partition Tolerance (P):
+<h2>Partition Tolerance (P):</h2>
   The system continues to operate despite network partitions or communication failures between nodes.
 
-Why is the CAP theorem important for Java developers?
-Distributed System Design:
+<h2>Why is the CAP theorem important for Java developers?</h2>
+<h2>Distributed System Design:</h2>
   When designing microservices, cloud applications, or other distributed systems, you need to understand the trade-offs to choose the right architecture and database for      your needs.
-Database Selection:
+<h2>Database Selection:</h2>
   Different databases have different strengths and weaknesses regarding CAP properties. Some are designed for strong consistency (like traditional relational databases),      while others prioritize availability and partition tolerance (like NoSQL databases).
-Trade-off Decisions:
+<h2>Trade-off Decisions:</h2>
   You'll need to decide which properties are most critical for your application's functionality and user experience. For example, a banking application might prioritize       consistency over availability, while a social media application might prioritize availability.
-Real-World Scenarios:
-Consider these examples:
-    Banking Application: Prioritize consistency to ensure accurate account balances across all nodes.
-    Social Media Application: Prioritize availability to ensure the application is always up and running, even if some nodes are down,
+<h2>Real-World Scenarios:</h2>
+<h3>Consider these examples:</h3>
+    <h4>Banking Application:</h4> Prioritize consistency to ensure accurate account balances across all nodes.
+    <h4>Social Media Application:</h4> Prioritize availability to ensure the application is always up and running, even if some nodes are down,
                               and accept some potential temporary inconsistencies.
-    E-commerce Application: Prioritize both consistency and availability, with partition tolerance as a secondary concern,
+    <h4>E-commerce Application:</h4> Prioritize both consistency and availability, with partition tolerance as a secondary concern,
                             to ensure accurate inventory and order processing.
 In computer science, the CAP theorem, sometimes called CAP theorem model or Brewer's theorem after its originator, Eric Brewer, states that any distributed system or data store can simultaneously provide only two of three guarantees: consistency, availability, and partition tolerance (CAP).
 
