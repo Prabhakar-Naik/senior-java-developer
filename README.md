@@ -97,13 +97,15 @@ Relatively simple to implement.<br>
 Single point of failure (the server).<br>
 Scalability can be limited by the server's capacity.<br>
 <h4>Diagram:</h4>
+
+```
 +----------+       +----------+       +----------+
 | Client 1 |------>|          |------>| Client 3 |
 +----------+       |  Server  |       +----------+
 +----------+       |          |       +----------+
 | Client 2 |------>|          |
 +----------+       +----------+
-
+```
 <h3>2. Peer-to-Peer (P2P) Architecture</h3>
 Description: Each node in the network has the same capabilities and can act as both a client and a server.
 <h4>Components:</h4>
