@@ -216,6 +216,15 @@ Complexity: The ease of development, deployment, and management.<br>
 Performance: The system's speed and responsiveness.
 
 # 4. Socket Programming (TCP/IP and UDP).
+Socket programming is a fundamental concept in distributed systems, enabling communication between processes running on different machines.<br>
+It provides the mechanism for building various distributed architectures, including those described earlier.<br>
+This section will cover the basics of socket programming with TCP/IP and UDP.
+<h2>What is a Socket?</h2>
+A socket is an endpoint of a two-way communication link between two programs running on the network.  It provides an interface for sending and receiving data.  Think of it as a "door" through which data can flow in and out of a process.
+
+<h2>TCP/IP</h2>
+TCP/IP (Transmission Control Protocol/Internet Protocol) is a suite of protocols that governs how data is transmitted over a network.  It provides reliable, ordered, and error-checked delivery of data.
+
 # 5. HTTP and RESTful APIs.
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
