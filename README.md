@@ -117,6 +117,8 @@ Highly resilient to failures.<br>
 Complex to manage and secure.<br>
 Scalable and fault-tolerant.<br>
 <h4>Diagram:</h4>
+
+```
 +----------+       +----------+       +----------+
 |  Peer 1  |<----->|  Peer 2  |<----->|  Peer 3  |
 +----------+       +----------+       +----------+
@@ -126,6 +128,7 @@ Scalable and fault-tolerant.<br>
 +----------+       +----------+       +----------+
 |  Peer 4  |<----->|  Peer 5  |<----->|  Peer 6  |
 +----------+       +----------+       +----------+
+```
 
 <h3>3. Microservices Architecture</h3>
 Description: An application is structured as a collection of small, independent services that communicate over a network.
@@ -142,6 +145,8 @@ Independent deployment and scaling of services.<br>
 Increased complexity in managing distributed systems.<br>
 Improved fault isolation.
 <h4>Diagram:</h4>
+
+```
 +----------+       +----------+       +----------+
 |Service A |--HTTP-->|Service B |--HTTP-->|Service C |
 +----------+       +----------+       +----------+
@@ -152,6 +157,7 @@ Improved fault isolation.
                +-----------------+
                | API Gateway     |
                +-----------------+
+```
 
   
 # 4. Socket Programming (TCP/IP and UDP).
