@@ -82,6 +82,76 @@ Use database-specific features for handling concurrency and consistency.
 It's essential to carefully consider the trade-offs between consistency, availability, and performance when choosing a consistency model for a Spring Boot application. The specific requirements of the application should guide the decision-making process.
 
 # 3. Distributed Systems Architectures.
+A distributed system is a collection of independent computers that appear to its users as a single coherent system.  These systems are essential for scalability, fault tolerance, and handling large amounts of data.  Here are some common architectures:
+
+<h3>1. Client-Server Architecture</h3>
+Description: A central server provides resources or services to multiple clients.
+
+<h4>Components:</h4>
+Server: Manages resources, handles requests, and provides responses.<br>
+Clients: Request services from the server.<br>
+Examples: Web servers, email servers, database servers.<br>
+<h4>Characteristics:</h4>
+Centralized control.<br>
+Relatively simple to implement.<br>
+Single point of failure (the server).<br>
+Scalability can be limited by the server's capacity.<br>
+<h4>Diagram:</h4>
++----------+       +----------+       +----------+
+| Client 1 |------>|          |------>| Client 3 |
++----------+       |  Server  |       +----------+
++----------+       |          |       +----------+
+| Client 2 |------>|          |
++----------+       +----------+
+
+<h3>2. Peer-to-Peer (P2P) Architecture</h3>
+Description: Each node in the network has the same capabilities and can act as both a client and a server.
+<h4>Components:</h4>
+Peers: Nodes that can both provide and consume resources.<br>
+Examples: BitTorrent, blockchain networks.<br>
+<h4>Characteristics:</h4>
+Decentralized control.<br>
+Highly resilient to failures.<br>
+Complex to manage and secure.<br>
+Scalable and fault-tolerant.<br>
+<h4>Diagram:</h4>
++----------+       +----------+       +----------+
+|  Peer 1  |<----->|  Peer 2  |<----->|  Peer 3  |
++----------+       +----------+       +----------+
+     ^                  ^                  ^
+     |                  |                  |
+     v                  v                  v
++----------+       +----------+       +----------+
+|  Peer 4  |<----->|  Peer 5  |<----->|  Peer 6  |
++----------+       +----------+       +----------+
+
+<h3>3. Microservices Architecture</h3>
+Description: An application is structured as a collection of small, independent services that communicate over a network.
+
+<h4>Components:</h4>
+Services: Small, independent, and self-contained applications.<br>
+API Gateway (Optional): A single entry point for clients.<br>
+Service Discovery: Mechanism for services to find each other.<br>
+Examples: Netflix, Amazon.
+
+<h4>Characteristics:</h4>
+Highly scalable and flexible.<br>
+Independent deployment and scaling of services.<br>
+Increased complexity in managing distributed systems.<br>
+Improved fault isolation.
+<h4>Diagram:</h4>
++----------+       +----------+       +----------+
+|Service A |--HTTP-->|Service B |--HTTP-->|Service C |
++----------+       +----------+       +----------+
+     ^                 ^                 ^
+     |                 |                 |
+     +-----------------+-----------------+
+                       |
+               +-----------------+
+               | API Gateway     |
+               +-----------------+
+
+  
 # 4. Socket Programming (TCP/IP and UDP).
 # 5. HTTP and RESTful APIs.
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
