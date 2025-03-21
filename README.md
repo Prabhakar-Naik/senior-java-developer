@@ -159,7 +159,62 @@ Improved fault isolation.
                +-----------------+
 ```
 
-  
+<h3>4. Message Queue Architecture</h3>
+Description: Components communicate by exchanging messages through a message queue.
+
+<h4>Components:</h4>
+Producers: Send messages to the queue.<br>
+Consumers: Receive messages from the queue.<br>
+Message Queue: A buffer that stores messages.<br>
+Examples: Kafka, RabbitMQ.
+<h4>Characteristics:</h4>
+Asynchronous communication.<br>
+Improved reliability and scalability.<br>
+Decoupling of components.<br>
+Can handle message bursts.
+<h4>Diagram:</h4>
+
+```
++----------+       +-------------+       +----------+
+| Producer |------>|Message Queue|------>| Consumer |
++----------+       +-------------+       +----------+
+                   |             |
+                   +-------------+
+```
+<h3>5. Shared-Nothing Architecture</h3>
+Description: Each node has its own independent resources (CPU, memory, storage) and communicates with other nodes over a network.
+<h4>Components:</h4>
+Nodes: Independent processing units.<br>
+Interconnect: Network for communication.<br>
+Examples: Many NoSQL databases (e.g., Cassandra, MongoDB in a sharded setup), distributed computing frameworks.<br>
+<h4>Characteristics:</h4>
+Highly scalable.<br>
+Fault-tolerant.<br>
+Avoids resource contention.<br>
+More complex data management.
+
+<h3>6. Service-Oriented Architecture (SOA)</h3>
+Description: A set of design principles used to structure applications as a collection of loosely coupled services. Services provide functionality through well-defined interfaces.
+<h4>Components:</h4>
+Service Provider: Creates and maintains the service.<Br>
+Service Consumer: Uses the service.<br>
+Service Registry: (Optional) A directory where services can be found.<br>
+Examples: Early web services implementations.<br>
+<h4>Characteristics:</h4>
+Reusability of services.<br>
+Loose coupling between components.<br>
+Platform independence.<br>
+Can be complex to manage.
+
+<h3>Choosing an Architecture</h3>
+The choice of a distributed system architecture depends on several factors:<br>
+Scalability: How well the system can handle increasing workloads.<br>
+Fault Tolerance: The system's ability to withstand failures.<br>
+Consistency: How up-to-date and synchronized the data is across nodes.<br>
+Availability: The system's ability to respond to requests.<br>
+Complexity: The ease of development, deployment, and management.<br>
+Performance: The system's speed and responsiveness.
+
 # 4. Socket Programming (TCP/IP and UDP).
 # 5. HTTP and RESTful APIs.
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
