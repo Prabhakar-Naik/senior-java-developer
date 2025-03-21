@@ -32,7 +32,40 @@ In computer science, the CAP theorem, sometimes called CAP theorem model or Brew
 While you won't write "CAP theorem code" directly, understanding the theorem is crucial for making architectural and design decisions in distributed Java applications. You'll choose technologies and patterns based on your application's tolerance for consistency, availability, and network partitions.
 
 # 2. Consistency Models.
-Consistency models define how data is consistent across multiple nodes in a distributed system. They specify the guarantees that the system provides to clients regarding the order and visibility of writes. Consistency models are a contract between the system and the application, specifying the guarantees the system provides to clients regarding the order and visibility of writes.
+Consistency models define how data is consistent across multiple nodes in a distributed system. They specify the guarantees that the system provides to clients regarding the order and visibility of writes. Consistency models are a contract between the system and the application, specifying the guarantees the system provides to clients regarding the order and visibility of writes.<br>
+In a Java Spring Boot application interacting with distributed systems or databases, consistency models define how data changes are observed across different nodes or clients.<br>
+<h4>Strong Consistency:</h4>
+All reads reflect the most recent write, providing a linear, real-time view of data. This is the strictest form of consistency.
+<h4>Causal Consistency:</h4>
+If operation B is causally dependent on operation A, then everyone sees A before B. Operations that are not causally related can be seen in any order.
+<h4>Eventual Consistency:</h4>
+Guarantees that if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value. In the meantime, reads may not reflect the most recent writes.
+<h4>Weak Consistency:</h4>
+After a write, subsequent reads might not see the update, even if no further writes occur.
+<h4>Session Consistency:</h4>
+During a single session, the client will see its own writes, and eventually consistent reads. After a disconnection, consistency guarantees are reset.
+<h4>Read-your-writes Consistency:</h4>
+A guarantee that a client will always see the effect of its own writes.
+Choosing a Consistency Model:
+<br>
+The choice of consistency model depends on the application's requirements and priorities:
+
+<h3>Data Sensitivity:</h3>
+For applications requiring strict data accuracy (e.g., financial transactions), strong consistency is crucial.<br>
+For applications where temporary inconsistencies are acceptable (e.g., social media feeds), eventual consistency can improve performance and availability.
+<h3>Performance and Availability:</h3>
+Strong consistency often involves trade-offs in terms of latency and availability, as it may require distributed locking or consensus mechanisms.<br>
+Eventual consistency allows for higher availability and lower latency, as it doesn't require immediate synchronization across all nodes.
+<h3>Complexity:</h3>
+Implementing strong consistency can be more complex, requiring careful handling of distributed transactions and concurrency control.<br>
+Eventual consistency can be simpler to implement but may require additional mechanisms for handling conflicts and inconsistencies.
+<h3>Use Cases:</h3>
+<h4>Strong Consistency:</h4> Banking systems, inventory management, critical data updates.
+<h4>Eventual Consistency:</h4> Social media feeds, content delivery networks, non-critical data updates.
+<h4>Causal Consistency:</h4> Collaborative editing, distributed chat applications.
+<h4>Read-your-writes Consistency:</h4> User profile updates, shopping carts.
+<h4>Session Consistency:</h4> E-commerce applications, web applications with user sessions.
+<h4>Weak Consistency:</h4> Sensor data monitoring, log aggregation.
 
 # 3. Distributed Systems Architectures.
 # 4. Socket Programming (TCP/IP and UDP).
