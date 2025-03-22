@@ -300,6 +300,21 @@ Some data loss is acceptable.<br>
 Examples: Streaming media, online gaming, DNS lookups.
 
 # 5. HTTP and RESTful APIs.
+<h2>HTTP: The Foundation of Data Communication</h2>
+Hypertext Transfer Protocol (HTTP) is the foundation of data communication for the World Wide Web.<br>
+It's a protocol that defines how messages are formatted and transmitted, and what actions web servers and browsers should take in response to various commands.
+<h3>Key characteristics:</h3>
+Stateless: Each request is independent of previous requests. The server doesn't store information about past client requests.<br>
+Request-response model: A client sends a request to a server, and the server sends back a response.<br>
+Uses TCP/IP: HTTP relies on the Transmission Control Protocol/Internet Protocol suite for reliable data transmission.
+<h2>HTTP Methods</h2>
+HTTP defines several methods to indicate the desired action for a resource. Here are the most common ones:<br>
+GET: Retrieves a resource. Should not have side effects.<br>
+POST: Submits data to be processed (e.g., creating a new resource).<br>
+PUT: Updates an existing resource. The entire resource is replaced.<br>
+DELETE: Deletes a resource.
+
+
 
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
