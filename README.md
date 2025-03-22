@@ -352,8 +352,12 @@ Use nested resources to represent relationships (e.g., /users/123/posts).<br>
 Use query parameters for filtering, sorting, and pagination (e.g., /users?page=2&limit=20).<br>
 Provide clear and consistent documentation.
 
-
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
+<h2>Remote Procedure Call (RPC)</h2>
+Remote Procedure Call (RPC) is a protocol that allows a program to execute a procedure or function on a remote system as if it were a local procedure call.<br>
+It simplifies the development of distributed applications by abstracting the complexities of network communication.
+
+
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
 # 9. Thread Safety and Synchronization.
