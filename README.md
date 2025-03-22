@@ -225,6 +225,41 @@ A socket is an endpoint of a two-way communication link between two programs run
 <h2>TCP/IP</h2>
 TCP/IP (Transmission Control Protocol/Internet Protocol) is a suite of protocols that governs how data is transmitted over a network.  It provides reliable, ordered, and error-checked delivery of data.
 
+<h2>TCP (Transmission Control Protocol)</h2>
+Connection-oriented: Establishes a connection between the sender and receiver before data transmission.<br>
+Reliable: Ensures that data is delivered correctly and in order.<br>
+Ordered: Data is delivered in the same sequence in which it was sent.<br>
+Error-checked: Detects and recovers from errors during transmission.<br>
+Flow control: Prevents the sender from overwhelming the receiver.<br>
+Congestion control: Manages network congestion to avoid bottlenecks.
+<h2>IP (Internet Protocol)</h2>
+Provides addressing and routing of data packets (datagrams) between hosts.
+
+<h2>UDP</h2>
+UDP (User Datagram Protocol) is a simpler protocol that provides a connectionless, unreliable, and unordered delivery of data.<br>
+Connectionless: No connection is established before data transmission.<br>
+Unreliable: Data delivery is not guaranteed; packets may be lost or duplicated.<br>
+Unordered: Data packets may arrive in a different order than they were sent.<br>
+No error checking: Minimal error detection.<br>
+No flow control or congestion control: Sender can send data at any rate.
+
+```
+TCP vs. UDP
+______________________________________________________________________________________________________
+Feature                             TCP                                   UDP                        |
+-----------------------------------------------------------------------------------------------------|
+Connection                  Connection-oriented                        Connectionless                |
+Reliability                 Reliable                                   Unreliable                    |
+Ordering                    Ordered                                    Unordered                     |
+Error Checking              Yes                                        Minimal                       |
+Flow Control                Yes                                        No                            |
+Congestion Control          Yes                                        No                            |
+Overhead                    Higher                                     Lower                         |
+Speed                       Slower (due to reliability mechanisms)     Faster                        |
+Use Cases                   Web browsing, email, file transfer         Streaming, online gaming, DNS |
+_____________________________________________________________________________________________________|
+```
+
 # 5. HTTP and RESTful APIs.
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
