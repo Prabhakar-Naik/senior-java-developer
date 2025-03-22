@@ -354,8 +354,20 @@ Provide clear and consistent documentation.
 
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
 <h2>Remote Procedure Call (RPC)</h2>
-Remote Procedure Call (RPC) is a protocol that allows a program to execute a procedure or function on a remote system as if it were a local procedure call.<br>
+Remote Procedure Call (RPC) is a protocol that allows a program to execute a procedure or function on a remote system as if it were a local procedure call.
 It simplifies the development of distributed applications by abstracting the complexities of network communication.
+
+<h2>How RPC Works</h2>
+Client: The client application makes a procedure call, passing arguments.<br>
+Client Stub: The client stub (a proxy) packages the arguments into a message (marshalling) and sends it to the server.<br>
+Network: The message is transmitted over the network.<br>
+Server Stub: The server stub (a proxy) receives the message, unpacks the arguments (unmarshalling), and calls the corresponding procedure on the server.<br>
+Server: The server executes the procedure and returns the result.<br>
+Server Stub: The server stub packages the result into a message and sends it back to the client.<br>
+Network: The message is transmitted over the network.<br>
+Client Stub: The client stub receives the message, unpacks the result, and returns it to the client application.<br>
+Client: The client application receives the result as if it were a local procedure call.
+
 
 
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
