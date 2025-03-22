@@ -288,8 +288,19 @@ Send data to the server's IP address and port.<br>
 Receive data from the server.<br>
 Close the socket.
 
+<h2>Choosing Between TCP and UDP</h2>
+The choice between TCP and UDP depends on the specific requirements of the application:
+<h3>Use TCP when:</h3>
+Reliable data delivery is crucial.<br>
+Data must be delivered in order.<br>
+Examples: File transfer, web browsing, database communication.
+<h3>Use UDP when:</h3>
+Speed and low latency are more important than reliability.<br>
+Some data loss is acceptable.<br>
+Examples: Streaming media, online gaming, DNS lookups.
 
 # 5. HTTP and RESTful APIs.
+
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
