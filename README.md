@@ -259,6 +259,34 @@ Speed                       Slower (due to reliability mechanisms)     Faster   
 Use Cases                   Web browsing, email, file transfer         Streaming, online gaming, DNS |
 _____________________________________________________________________________________________________|
 ```
+<h2>Socket Programming with TCP</h2>
+The typical steps involved in socket programming with TCP are:<br>
+<h3>Server Side:</h3>
+Create a socket.<br>
+Bind the socket to a specific IP address and port.<br>
+Listen for incoming connections.<br>
+Accept a connection from a client.<br>
+Receive and send data.<br>
+Close the socket.<br>
+<h3>Client Side:</h3>
+Create a socket.<br>
+Connect the socket to the server's IP address and port.<br>
+Send and receive data.<br>
+Close the socket.<br>
+
+Socket Programming with UDP
+The steps involved in socket programming with UDP are:
+Server Side:
+Create a socket.
+Bind the socket to a specific IP address and port.
+Receive data from a client.
+Send data to the client.
+Close the socket.
+Client Side:
+Create a socket.
+Send data to the server's IP address and port.
+Receive data from the server.
+Close the socket.
 
 # 5. HTTP and RESTful APIs.
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
