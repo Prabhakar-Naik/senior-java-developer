@@ -314,6 +314,43 @@ POST: Submits data to be processed (e.g., creating a new resource).<br>
 PUT: Updates an existing resource. The entire resource is replaced.<br>
 DELETE: Deletes a resource.
 
+<h2>HTTP Status Codes</h2>
+HTTP status codes are three-digit numbers that indicate the outcome of a request. They are grouped into categories:<br>
+1xx (Informational): The request was received, continuing process.<br>
+2xx (Success): The request was successfully received, understood, and accepted.<br>
+200 OK: Standard response for successful HTTP requests.<br>
+201 Created: The request has been fulfilled and resulted in a new resource being created.<br>
+3xx (Redirection): Further action needs to be taken in order to complete the request.<br>
+4xx (Client Error): The request contains bad syntax or cannot be fulfilled.<br>
+400 Bad Request: The server cannot understand the request due to invalid syntax.<br>
+401 Unauthorized: Authentication is required and has failed or has not yet been provided.<br>
+403 Forbidden: The client does not have permission to access the resource.<br>
+404 Not Found: The server cannot find the requested resource.<br>
+5xx (Server Error): The server failed to fulfill an apparently valid request.<br>
+500 Internal Server Error: A generic error message indicating that something went wrong on the server.<br>
+502 Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from the upstream server.<br>
+503 Service Unavailable: The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.
+<h3>RESTful APIs: Designing for Simplicity and Scalability</h3>
+REST (Representational State Transfer) is an architectural style for designing networked applications. It's commonly used to build web services that are:
+Stateless: Each request is independent.<br>
+Client-server: Clear separation between the client and server.<br>
+Cacheable: Responses can be cached to improve performance.<br>
+Layered system: The architecture can be composed of multiple layers.<br>
+Uniform Interface: Key to decoupling and independent evolution.<br>
+RESTful APIs are APIs that adhere to the REST architectural style.
+<h3>RESTful Principles</h3>
+Resource Identification: Resources are identified by URLs (e.g., /users/123).<br>
+Representation: Clients and servers exchange representations of resources (e.g., JSON, XML).<br>
+Self-Descriptive Messages: Messages include enough information to understand how to process them (e.g., using HTTP headers).<br>
+Hypermedia as the Engine of Application State (HATEOAS): Responses may contain links to other resources, enabling API discovery.
+<h3>RESTful API Design Best Practices</h3>
+Use HTTP methods according to their purpose (GET, POST, PUT, DELETE).<br>
+Use appropriate HTTP status codes to indicate the outcome of a request.<br>
+Use nouns to represent resources (e.g., /users, /products).<br>
+Use plural nouns for collections (e.g., /users not /user).<br>
+Use nested resources to represent relationships (e.g., /users/123/posts).<br>
+Use query parameters for filtering, sorting, and pagination (e.g., /users?page=2&limit=20).<br>
+Provide clear and consistent documentation.
 
 
 # 6. Remote Procedure Call (RCP) - gRCP, Thrift, RMI.
