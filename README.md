@@ -372,7 +372,7 @@ Client: The client application receives the result as if it were a local procedu
 <h4>Here are some popular RPC frameworks:
 <h3>1. gRPC</h3>
 Developed by: Google<br>
-Description: A modern, high-performance, open-source RPC framework. It uses Protocol Buffers as its Interface Definition Language (IDL).<br>
+Description: A modern, high-performance, open-source RPC framework. It uses Protocol Buffers as its Interface Definition Language (IDL).
 <h4>Key Features:</h4>
 Protocol Buffers: Efficient, strongly-typed binary serialization format.<br>
 HTTP/2: Uses HTTP/2 for transport, enabling features like multiplexing, bidirectional streaming, and header compression.<br>
@@ -381,8 +381,29 @@ High Performance: Designed for low latency and high throughput.<br>
 Strongly Typed: Enforces data types, reducing errors.<br>
 Streaming: Supports both unary (request/response) and streaming (bidirectional or server/client-side streaming) calls.<br>
 Authentication: Supports various authentication mechanisms.<br>
-Use Cases: Microservices, mobile applications, real-time communication.<br>
+Use Cases: Microservices, mobile applications, real-time communication.
 
+<h3>2. Apache Thrift</h3>
+Developed by: Facebook<br>
+Description: An open-source, cross-language framework for developing scalable cross-language services. It has its own Interface Definition Language (IDL).
+<h4>Key Features:</h4>
+Cross-language: Supports many programming languages (e.g., C++, Java, Python, PHP, Ruby, Erlang).<br>
+Customizable Serialization: Supports binary, compact, and JSON serialization.<br>
+Transport Layers: Supports various transport layers (e.g., TCP sockets, HTTP).<br>
+Protocols: Supports different protocols (e.g., binary, compact, JSON).<br>
+IDL: Uses Thrift Interface Definition Language to define service interfaces and data types.<br>
+Use Cases: Building services that need to communicate across different programming languages.
+
+<h3>3. Java RMI</h3>
+Developed by: Oracle (part of the Java platform)<br>
+Description: Java Remote Method Invocation (RMI) is a Java-specific RPC mechanism that allows a Java program to invoke methods on a remote Java object.
+<h4>Key Features:</h4>
+Java-to-Java: Designed specifically for communication between Java applications.<br>
+Object Serialization: Uses Java serialization for marshalling and unmarshalling.<br>
+Built-in: Part of the Java Development Kit (JDK).<br>
+Distributed Garbage Collection: Supports distributed garbage collection.<br>
+Method-oriented: Focuses on invoking methods on remote objects.<br>
+Use Cases: Distributed applications written entirely in Java.<br>
 
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
