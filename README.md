@@ -405,6 +405,25 @@ Distributed Garbage Collection: Supports distributed garbage collection.<br>
 Method-oriented: Focuses on invoking methods on remote objects.<br>
 Use Cases: Distributed applications written entirely in Java.<br>
 
+<h3>Comparison</h3>
+
+```
+Feature                       gRPC                            Apache Thrift                              Java RMI
+IDL                      Protocol Buffers                      Thrift IDL                         Java Interface Definition
+Transport                    HTTP/2                        TCP sockets, HTTP, etc.                  JRMP (Java Remote Method Protocol)
+Serialization            Protocol Buffers                  Binary, Compact, JSON                     Java Serialization
+Language Support  Multiple (C++,Java,Python,Go,etc.)   Multiple (C++,Java,Python,PHP,etc.)                Java only
+Performance                    High                                Good                                    Moderate
+Maturity            Modern, actively developed                Mature, widely used                  Mature, less actively developed
+Complexity                   Moderate                            Moderate                                Relatively Simple
+```
+<h3>Choosing the Right RPC Framework</h3>
+The choice of an RPC framework depends on the specific requirements of the distributed system:<br>
+gRPC: Best for high-performance, polyglot microservices and real-time applications.<br>
+Apache Thrift: Suitable for building services that need to communicate across a wide range of programming languages.<br>
+Java RMI: A good choice for distributed applications written entirely in Java.<br>
+
+
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
 # 9. Thread Safety and Synchronization.
