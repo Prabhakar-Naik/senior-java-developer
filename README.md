@@ -421,10 +421,40 @@ Complexity                   Moderate                            Moderate       
 The choice of an RPC framework depends on the specific requirements of the distributed system:<br>
 gRPC: Best for high-performance, polyglot microservices and real-time applications.<br>
 Apache Thrift: Suitable for building services that need to communicate across a wide range of programming languages.<br>
-Java RMI: A good choice for distributed applications written entirely in Java.<br>
-
+Java RMI: A good choice for distributed applications written entirely in Java.
 
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
+Message queues are a fundamental component of distributed systems, enabling asynchronous communication between services. They act as intermediaries, holding messages and delivering them to consumers. This decouples producers (message senders) from consumers (message receivers), improving scalability, reliability, and flexibility.
+
+<h2>Key Concepts</h2>
+Message: The data transmitted between applications.<br>
+Producer: An application that sends messages to the message queue.<br>
+Consumer: An application that receives messages from the message queue.<br>
+Queue: A buffer that stores messages until they are consumed.<br>
+Topic: A category or feed name to which messages are published.<br>
+Broker: A server that manages the message queue.<br>
+Exchange: A component that receives messages from producers and routes them to queues (used in RabbitMQ).<br>
+Binding: A rule that defines how messages are routed from an exchange to a queue (used in RabbitMQ).
+<h3>Popular Message Queue Technologies</h3>
+Here's an overview of three popular message queue technologies:
+<h4>1.  Apache Kafka</h4>
+Description: A distributed, partitioned, replicated log service developed by the Apache Software Foundation. It's designed for high-throughput, fault-tolerant streaming of data.
+<h5>Key Features:</h5>
+High Throughput: Can handle millions of messages per second.<br>
+Scalability: Horizontally scalable by adding more brokers.<br>
+Durability: Messages are persisted on disk and replicated across brokers.<br>
+Fault Tolerance: Tolerates broker failures without data loss.<br>
+Publish-Subscribe: Uses a publish-subscribe model where producers publish messages to topics, and consumers subscribe to topics to receive messages.<br>
+Log-based Storage: Messages are stored in an ordered, immutable log.<br>
+Real-time Processing: Well-suited for real-time data processing and stream processing.
+<h5>Use Cases:</h5>
+Real-time data pipelines<br>
+Stream processing<br>
+Log aggregation<br>
+Metrics collection<br>
+Event sourcing
+
+
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
 # 9. Thread Safety and Synchronization.
 # 10. Java Memory Model.
