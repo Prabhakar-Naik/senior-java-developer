@@ -368,6 +368,20 @@ Network: The message is transmitted over the network.<br>
 Client Stub: The client stub receives the message, unpacks the result, and returns it to the client application.<br>
 Client: The client application receives the result as if it were a local procedure call.
 
+<h2>Popular RPC Frameworks</h2>
+<h4>Here are some popular RPC frameworks:
+<h3>1. gRPC</h3>
+Developed by: Google<br>
+Description: A modern, high-performance, open-source RPC framework. It uses Protocol Buffers as its Interface Definition Language (IDL).<br>
+<h4>Key Features:</h4>
+Protocol Buffers: Efficient, strongly-typed binary serialization format.<br>
+HTTP/2: Uses HTTP/2 for transport, enabling features like multiplexing, bidirectional streaming, and header compression.<br>
+Polyglot: Supports multiple programming languages (e.g., C++, Java, Python, Go, Ruby, C#).<br>
+High Performance: Designed for low latency and high throughput.<br>
+Strongly Typed: Enforces data types, reducing errors.<br>
+Streaming: Supports both unary (request/response) and streaming (bidirectional or server/client-side streaming) calls.<br>
+Authentication: Supports various authentication mechanisms.<br>
+Use Cases: Microservices, mobile applications, real-time communication.<br>
 
 
 # 7. Message Queues (Kafka, RabbitMQ, JMS).
