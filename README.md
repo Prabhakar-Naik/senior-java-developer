@@ -657,6 +657,19 @@ public class ForkJoinPoolExample {
 ```
 
 # 9. Thread Safety and Synchronization.
+In a multithreaded environment, where multiple threads execute concurrently, ensuring data consistency and preventing race conditions is crucial. This is where thread safety and synchronization come into play.
+<h2>1. Thread Safety</h2>
+What it is: A class or method is thread-safe if it behaves correctly when accessed from multiple threads concurrently, without requiring any additional synchronization on the part of the client.<br>
+Why it matters: When multiple threads access shared resources (e.g., variables, objects) without proper synchronization, it can lead to:<br>
+Race conditions: The outcome of the program depends on the unpredictable order of execution of multiple threads.<br>
+Data corruption: Inconsistent or incorrect data due to concurrent modifications.<br>
+Unexpected exceptions: Program errors caused by concurrent access to shared resources.
+<h3>How to achieve thread safety:</h3>
+Synchronization: Using mechanisms like synchronized blocks or methods to control access to shared resources.<br>
+Immutability: Designing objects that cannot be modified after creation.<br>
+Atomic variables: Using classes from the java.util.concurrent.atomic package that provide atomic operations.<br>
+Thread-safe collections: Using concurrent collection classes from the java.util.concurrent package.<br>
+
 # 10. Java Memory Model.
 # 11. Distributed Databases (Cassandra, MongoDB, HBase).
 # 12. Data Sharding and Partitioning.
