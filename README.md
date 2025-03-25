@@ -486,6 +486,60 @@ Order processing<br>
 E-commerce
 
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
+Java provides powerful tools for concurrent programming, allowing you to execute tasks in parallel and improve application performance. Here's an overview of ExecutorService, Future, and ForkJoinPool:
+
+<h2>1. ExecutorService</h2>
+What it is: An interface that provides a way to manage a pool of threads. It decouples task submission from thread management. Instead of creating and managing threads manually, you submit tasks to an ExecutorService, which takes care of assigning them to available threads.
+
+<h3>Key Features:</h3>
+
+Thread pooling: Reuses threads to reduce the overhead of thread creation.<br>
+Task scheduling: Allows you to submit tasks for execution.<br>
+Lifecycle management: Provides methods to control the lifecycle of the executor and its threads.
+<h3>Types of ExecutorService:</h3>
+ThreadPoolExecutor: A flexible implementation that allows you to configure various parameters like core pool size, maximum pool size, keep-alive time, and queue type.
+FixedThreadPool: Creates an executor with a fixed number of threads.<br>
+CachedThreadPool: Creates an executor that creates new threads as needed, but reuses previously created threads when they are available.<br>
+ScheduledThreadPoolExecutor: An executor that can schedule tasks to run after a delay or periodically.
+<h3>Example:</h3>
+
+```
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorServiceExample {
+    public static void main(String[] args) {
+        // Create a fixed thread pool with 3 threads
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        // Submit tasks to the executor
+        for (int i = 0; i < 5; i++) {
+            final int taskNumber = i;
+            executor.submit(() -> {
+                System.out.println("Task " + taskNumber + " is running in thread: " + Thread.currentThread().getName());
+                try {
+                    Thread.sleep(1000); // Simulate task execution time
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // Restore the interrupted status
+                    System.err.println("Task " + taskNumber + " interrupted: " + e.getMessage());
+                }
+                System.out.println("Task " + taskNumber + " completed");
+            });
+        }
+
+        // Shutdown the executor when you're done with it
+        executor.shutdown();
+        try {
+            executor.awaitTermination(5, java.util.concurrent.TimeUnit.SECONDS); // Wait for tasks to complete
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("All tasks finished");
+    }
+}
+
+```
+<h2>2. Future</h2>
 
 
 # 9. Thread Safety and Synchronization.
