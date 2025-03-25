@@ -540,7 +540,52 @@ public class ExecutorServiceExample {
 
 ```
 <h2>2. Future</h2>
+What it is: An interface that represents the result of an asynchronous computation. When you submit a task to an ExecutorService, it returns a Future object.
+<h3>Key Features:</h3>
+Retrieving results: Allows you to get the result of the task when it's complete.<br>
+Checking task status: Provides methods to check if the task is done, cancelled, or in progress.<br>
+Cancelling tasks: Enables you to cancel the execution of a task.
+<h3>Example:</h3>
 
+```
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+
+public class FutureExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // Define a task using Callable (which returns a value)
+        Callable<String> task = () -> {
+            System.out.println("Task is running in thread: " + Thread.currentThread().getName());
+            Thread.sleep(2000);
+            return "Task completed successfully!";
+        };
+
+        // Submit the task and get a Future
+        Future<String> future = executor.submit(task);
+
+        try {
+            System.out.println("Waiting for task to complete...");
+            String result = future.get(); // Blocks until the result is available
+            System.out.println("Result: " + result);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.println("Task interrupted: " + e.getMessage());
+        } catch (ExecutionException e) {
+            System.err.println("Task execution failed: " + e.getMessage());
+        } finally {
+            executor.shutdown();
+        }
+    }
+}
+
+```
+
+<h2>3. ForkJoinPool</h2>
 
 # 9. Thread Safety and Synchronization.
 # 10. Java Memory Model.
