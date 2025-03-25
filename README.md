@@ -586,6 +586,75 @@ public class FutureExample {
 ```
 
 <h2>3. ForkJoinPool</h2>
+What it is: An implementation of ExecutorService designed for recursive, divide-and-conquer tasks. It uses a work-stealing algorithm to efficiently distribute tasks among threads.
+<h3>Key Features:</h3>
+Work-stealing: Threads that have finished their own tasks can "steal" tasks from other threads that are still busy. This improves efficiency and reduces idle time.
+Recursive tasks: Optimized for tasks that can be broken down into smaller subtasks.<br>
+Parallelism: Leverages multiple processors to speed up execution.
+<h3>When to use ForkJoinPool:</h3>
+When you have tasks that can be divided into smaller, independent subtasks.<br>
+When you want to take advantage of multiple processors for parallel execution.
+<h3>Example:</h3>
+
+```
+import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.ForkJoinPool;
+import java.util.List;
+import java.util.ArrayList;
+
+// RecursiveTask to calculate the sum of a list of numbers
+class SumCalculator extends RecursiveTask<Integer> {
+    private static final int THRESHOLD = 10; // Threshold for splitting tasks
+    private final List<Integer> numbers;
+
+    public SumCalculator(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    @Override
+    protected Integer compute() {
+        int size = numbers.size();
+        if (size <= THRESHOLD) {
+            // Base case: Calculate the sum directly
+            int sum = 0;
+            for (Integer number : numbers) {
+                sum += number;
+            }
+            return sum;
+        } else {
+            // Recursive case: Split the list and fork subtasks
+            int middle = size / 2;
+            List<Integer> leftList = numbers.subList(0, middle);
+            List<Integer> rightList = numbers.subList(middle, size);
+
+            SumCalculator leftTask = new SumCalculator(leftList);
+            SumCalculator rightTask = new SumCalculator(rightList);
+
+            leftTask.fork(); // Asynchronously execute the left task
+            int rightSum = rightTask.compute(); // Execute the right task in the current thread
+            int leftSum = leftTask.join();    // Wait for the left task to complete and get the result
+
+            return leftSum + rightSum;
+        }
+    }
+}
+
+public class ForkJoinPoolExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 100; i++) {
+            numbers.add(i);
+        }
+
+        ForkJoinPool pool = ForkJoinPool.commonPool(); // Use the common pool
+        SumCalculator calculator = new SumCalculator(numbers);
+        Integer sum = pool.invoke(calculator); // Start the computation
+
+        System.out.println("Sum: " + sum);
+    }
+}
+
+```
 
 # 9. Thread Safety and Synchronization.
 # 10. Java Memory Model.
