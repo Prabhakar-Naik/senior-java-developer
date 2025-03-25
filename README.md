@@ -454,8 +454,40 @@ Log aggregation<br>
 Metrics collection<br>
 Event sourcing
 
+<h4>2.  RabbitMQ</h4>
+Description: An open-source message-broker software that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), MQ Telemetry Transport (MQTT), and other protocols.
+<h5>Key Features:</h5>
+Flexible Routing: Supports various routing mechanisms, including direct, topic, headers, and fanout exchanges.<br>
+Reliability: Offers features like message acknowledgments, persistent queues, and publisher confirms to ensure message delivery.<br>
+Message Ordering: Supports message ordering.<br>
+Multiple Protocols: Supports AMQP, MQTT, and STOMP.<br>
+Clustering: Supports clustering for high availability and scalability.<br>
+Wide Language Support: Clients are available for many programming languages.
+<h5>Use Cases:</h5>
+Task queues<br>
+Message routing<br>
+Work distribution<br>
+Background processing<br>
+Integrating applications with different messaging protocols
+
+<h4>3.  Java Message Service (JMS)</h4>
+Description: A Java API that provides a standard way to access enterprise messaging systems. It allows Java applications to create, send, receive, and read messages.
+<h5>Key Features:</h5>
+Standard API: Provides a common interface for interacting with different messaging providers.<br>
+Message Delivery: Supports both point-to-point (queue) and publish-subscribe (topic) messaging models.<br>
+Reliability: Supports message delivery guarantees, including acknowledgments and transactions.<br>
+Message Types: Supports various message types, including text, binary, map, and object messages.<br>
+Transactions: Supports local and distributed transactions for ensuring message delivery and processing consistency.
+<h5>Use Cases:</h5>
+Enterprise application integration<br>
+Business process management<br>
+Financial transactions<br>
+Order processing<br>
+E-commerce
 
 # 8. Java Concurrency (ExecutorService, Future, ForkJoinPool).
+
+
 # 9. Thread Safety and Synchronization.
 # 10. Java Memory Model.
 # 11. Distributed Databases (Cassandra, MongoDB, HBase).
