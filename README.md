@@ -670,6 +670,71 @@ Immutability: Designing objects that cannot be modified after creation.<br>
 Atomic variables: Using classes from the java.util.concurrent.atomic package that provide atomic operations.<br>
 Thread-safe collections: Using concurrent collection classes from the java.util.concurrent package.<br>
 
+<h2>2. Synchronization</h2>
+What it is: A mechanism that controls the access of multiple threads to shared resources. It ensures that only one thread can access a shared resource at a time, preventing race conditions and data corruption.<br>
+How it works: Java provides the synchronized keyword to achieve synchronization. It can be used with:<br>
+Synchronized methods: When a thread calls a synchronized method, it acquires the lock on the object. Other threads trying to call the same method on the same object will be blocked until the lock is released.<br>
+Synchronized blocks: A synchronized block of code acquires the lock on a specified object. Only one thread can execute that block of code at a time.
+<h3>Example of Synchronization:</h3>
+
+```
+class Counter {
+    private int count = 0;
+    private final Object lock = new Object(); // Explicit lock object
+
+    // Synchronized method
+    public synchronized void incrementSynchronizedMethod() {
+        count++;
+    }
+
+    // Synchronized block
+    public void incrementSynchronizedBlock() {
+        synchronized (lock) {
+            count++;
+        }
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class SynchronizationExample {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        // Create multiple threads to increment the counter
+        Thread[] threads = new Thread[10];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
+                for (int j = 0; j < 1000; j++) {
+                    // counter.incrementSynchronizedMethod(); // Using synchronized method
+                    counter.incrementSynchronizedBlock(); // Using synchronized block
+                }
+            });
+            threads[i].start();
+        }
+
+        // Wait for all threads to complete
+        for (Thread thread : threads) {
+            thread.join();
+        }
+
+        System.out.println("Final count: " + counter.getCount()); // Should be 10000
+    }
+}
+```
+<h2>3. Other Thread Safety Mechanisms</h2>
+Atomic Variables: The java.util.concurrent.atomic package provides classes like AtomicInteger, AtomicLong, and AtomicReference that allow you to perform atomic operations (e.g., increment, compareAndSet) without using locks. These are often more efficient than using synchronized for simple operations.<br>
+Immutability: Immutable objects are inherently thread-safe because their state cannot be modified after they are created. Examples of immutable classes in Java include String, and wrapper classes like Integer, Long, and Double.<br>
+Thread-Safe Collections: The java.util.concurrent package provides collection classes like ConcurrentHashMap, ConcurrentLinkedQueue, and CopyOnWriteArrayList that are designed to be thread-safe and provide high performance in concurrent environments.
+<h2>Choosing the Right Approach</h2>
+The choice of which thread safety mechanism to use depends on the specific requirements of your application:<br>
+Use synchronized for complex operations that involve multiple shared variables or when you need to maintain a consistent state across multiple method calls.<br>
+Use atomic variables for simple atomic operations like incrementing or updating a single variable.<br>
+Use immutable objects whenever possible to simplify thread safety and improve performance.<br>
+Use thread-safe collections when you need to share collections between multiple threads.
+
 # 10. Java Memory Model.
 # 11. Distributed Databases (Cassandra, MongoDB, HBase).
 # 12. Data Sharding and Partitioning.
