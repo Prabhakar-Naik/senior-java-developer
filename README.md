@@ -832,6 +832,22 @@ MongoDB: Best for applications that need a flexible data model, rich query capab
 HBase: Best for applications that require fast, random access to large amounts of data and tight integration with Hadoop, such as real-time data processing, analytics, and log processing.
 
 # 12. Data Sharding and Partitioning.
+Data sharding and partitioning are techniques used to distribute data across multiple storage units, improving the scalability, performance, and manageability of databases. While they share the goal of dividing data, they differ in their approach and scope.
+<h2>1. Partitioning</h2>
+<h3>Definition:</h3> Partitioning involves dividing a large table or index into smaller, more manageable parts called partitions. These partitions reside within the same database instance.
+<h3>Purpose:</h3>
+Improve query performance: Queries can be directed to specific partitions, reducing the amount of data that needs to be scanned.<br>
+Enhance manageability: Partitions can be managed individually, making operations like backup, recovery, and maintenance easier.<br>
+Increase availability: Partitioning can improve availability by allowing operations to be performed on individual partitions without affecting others.
+<h3>Types of Partitioning:</h3>
+Range partitioning: Data is divided based on a range of values in a specific column (e.g., date ranges, alphabetical ranges).<br>
+List partitioning: Data is divided based on a list of specific values in a column (e.g., specific region codes, product categories).<br>
+Hash partitioning: Data is divided based on a hash function applied to a column value, ensuring even distribution across partitions.<br>
+Composite partitioning: A combination of different partitioning methods (e.g., range-hash partitioning).
+<h3>Example:</h3>
+Consider a table storing customer orders. It can be partitioned by order date (range partitioning) into monthly partitions. Queries for orders within a specific month will only need to scan the relevant partition.
+
+
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
 # 14. Zookeeper for Distributed Coordination.
 # 15. Consensus Algorithms (Paxos, Raft).
