@@ -765,9 +765,36 @@ Monitor lock rule: An unlock on a monitor happens before every subsequent lock o
 Thread start rule: A call to Thread.start() happens before every action in the started thread.<br>
 Thread termination rule: Every action in a thread happens before the termination of that thread.<br>
 Volatile variable rule: A write to a volatile field happens before every subsequent read of that field.
-
+<h2>5. Volatile Keyword</h2>
+The volatile keyword is used to ensure that a variable is read and written directly from and to main memory, bypassing the thread's working memory.<br>
+This provides a limited form of synchronization and helps to ensure visibility of changes across threads.<br>
+Visibility: When a thread writes to a volatile variable, all other threads can immediately see the updated value.<br>
+Ordering: Volatile writes and reads cannot be reordered by the compiler or processor, ensuring that they occur in the order specified in the code.<br>
+Not atomic: Note that volatile does not guarantee atomicity. For example, volatile int x++; is not thread-safe, as the increment operation involves multiple non-atomic operations (read, increment, write).
+<h2>6. Key Takeaways</h2>
+The JMM defines how threads interact with memory in Java.<br>
+It ensures that memory operations are performed in a consistent and predictable manner across different platforms.<br>
+The happens-before relationship is crucial for understanding memory visibility and ordering.<br>
+The volatile keyword can be used to ensure visibility and prevent reordering of memory operations.<br>
+Proper understanding of the JMM is essential for writing correct and efficient multithreaded Java programs.
 
 # 11. Distributed Databases (Cassandra, MongoDB, HBase).
+Distributed databases are designed to store and manage data across multiple servers or nodes, providing scalability, fault tolerance, and high availability. Here's an overview of three popular distributed databases: Cassandra, MongoDB, and HBase:
+<h2>1. Apache Cassandra</h2>
+<h3>Description:</h3> A distributed, wide-column store, NoSQL database known for its high availability, scalability, and fault tolerance.
+<h3>Key Features:</h3> Decentralized architecture: All nodes in a Cassandra cluster are equal, minimizing single points of failure.<br>
+High write throughput: Optimized for fast writes, making it suitable for applications with heavy write loads.<br>
+Scalability: Can handle massive amounts of data and high traffic by adding more nodes to the cluster.<br>
+Fault tolerance: Data is automatically replicated across multiple nodes, ensuring data availability even if some nodes fail.<br>
+Tunable consistency: Supports both strong and eventual consistency, allowing you to choose the consistency level that best fits your application's needs.<br>
+<h3>Use Cases:</h3>
+Time-series data<br>
+Logging and event logging<br>
+IoT (Internet of Things)<br>
+Social media platforms<br>
+Real-time analytics<br>
+More Details: <link src="https://en.wikipedia.org/wiki/Apache_Cassandra">Wiki</link>
+
 # 12. Data Sharding and Partitioning.
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
 # 14. Zookeeper for Distributed Coordination.
