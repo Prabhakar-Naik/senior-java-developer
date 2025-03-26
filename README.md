@@ -736,6 +736,37 @@ Use immutable objects whenever possible to simplify thread safety and improve pe
 Use thread-safe collections when you need to share collections between multiple threads.
 
 # 10. Java Memory Model.
+The Java Memory Model (JMM) is a crucial concept for understanding how threads interact with memory in Java. It defines how the Java Virtual Machine (JVM) handles memory access, particularly concerning shared variables accessed by multiple threads.
+<h2>1. Need for JMM</h2>
+In a multithreaded environment, each thread has its own working memory (similar to a CPU cache). Threads don't directly read from or write to the main memory; instead, they operate on their working memory.<br>
+This can lead to inconsistencies if multiple threads are working with the same shared variables.<br>
+The JMM provides a specification to ensure that these inconsistencies are handled in a predictable and consistent manner across different hardware and operating systems.
+<h2>2. Key Concepts</h2>
+Main Memory: This is the memory area where shared variables reside. It is accessible to all threads.<br>
+Working Memory: Each thread has its own working memory, which is an abstraction of the cache and registers. It stores copies of the shared variables that the thread is currently working with.<br>
+Shared Variables: Variables that are accessible by multiple threads. These are typically instance variables, static variables, and array elements stored in the heap.<br>
+Memory Operations: The JMM defines a set of operations that a thread can perform on variables, including:<br>
+Read: Reads the value of a variable from main memory into the thread's working memory.<br>
+Load: Copies the variable from the thread's working memory into the thread's execution environment.<br>
+Use: Uses the value of the variable in the thread's code.<br>
+Assign: Assigns a new value to the variable in the thread's working memory.<br>
+Store: Copies the variable from the thread's working memory back to main memory.<br>
+Write: Writes the value of the variable from main memory.
+<h2>3. JMM Guarantees</h2>
+The JMM provides certain guarantees to ensure правильность of multithreaded programs:<br>
+Visibility: Changes made by one thread to a shared variable are visible to other threads.<br>
+Ordering: The order in which operations are performed by a thread is preserved.
+<h2>4. Happens-Before Relationship</h2>
+The JMM defines the "happens-before" relationship, which is crucial for understanding memory visibility and ordering.<br>
+If one operation "happens-before" another, the result of the first operation is guaranteed to be visible to, and ordered before, the second operation.<br>
+Some key happens-before relationships include:<br>
+Program order rule: Within a single thread, each action in the code happens before every action that comes later in the program's order.<br>
+Monitor lock rule: An unlock on a monitor happens before every subsequent lock on that same monitor.<br>
+Thread start rule: A call to Thread.start() happens before every action in the started thread.<br>
+Thread termination rule: Every action in a thread happens before the termination of that thread.<br>
+Volatile variable rule: A write to a volatile field happens before every subsequent read of that field.
+
+
 # 11. Distributed Databases (Cassandra, MongoDB, HBase).
 # 12. Data Sharding and Partitioning.
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
