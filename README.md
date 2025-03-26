@@ -793,7 +793,7 @@ Logging and event logging<br>
 IoT (Internet of Things)<br>
 Social media platforms<br>
 Real-time analytics<br>
-More Details: <link src="https://en.wikipedia.org/wiki/Apache_Cassandra">Wiki</link>
+More Details: <a href="https://en.wikipedia.org/wiki/Apache_Cassandra">Wiki</a>
 
 # 12. Data Sharding and Partitioning.
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
