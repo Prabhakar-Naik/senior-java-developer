@@ -795,6 +795,36 @@ Social media platforms<br>
 Real-time analytics<br>
 More Details: <a href="https://en.wikipedia.org/wiki/Apache_Cassandra">Wiki</a>
 
+<h2>2. MongoDB</h2>
+<h3>Description:</h3> A document-oriented NoSQL database that stores data in flexible, JSON-like documents.
+<h3>Key Features:</h3>Document data model: Stores data in BSON (Binary JSON) format, which is flexible and easy to work with.<br>
+Dynamic schema: Does not require a predefined schema, allowing you to easily change the structure of your data as your application evolves.<br>
+Scalability: Supports horizontal scaling through sharding, which distributes data across multiple nodes.<br>
+High availability: Replica sets provide automatic failover and data redundancy.<br>
+Rich query language: Supports a wide range of queries, including complex queries, aggregations, and text search.
+<h3>Use Cases:</h3>
+Content management<br>
+Web applications<br>
+E-commerce<br>
+Gaming<br>
+Real-time analytics
+More Details: <a href="http://guyharrison.squarespace.com/blog/2015/3/23/sakila-sample-schema-in-mongodb.html">sample comparison</a>
+
+<h2>3. Apache HBase</h2>
+<h3>Description:</h3>A distributed, column-oriented NoSQL database built on top of Hadoop. It provides fast, random access to large amounts of data.
+<h3>Key Features:</h3>Column-oriented storage: Stores data in columns rather than rows, which is efficient for analytical queries.<br>
+Integration with Hadoop: Works closely with Hadoop and HDFS, leveraging their scalability and fault tolerance.<br>
+High write throughput: Supports fast writes, making it suitable for write-intensive applications.<br>
+Strong consistency: Provides strong consistency, ensuring that reads return the most recent writes.<br>
+Real-time access: Provides low-latency access to data, making it suitable for real-time applications.
+<h3>Use Cases:</h3>
+Real-time data processing<br>
+Data warehousing<br>
+Analytics<br>
+Log processing<br>
+Search indexing<br>
+More Details: <a href="https://aws.amazon.com/what-is/apache-hbase/">Document</a>
+
 # 12. Data Sharding and Partitioning.
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
 # 14. Zookeeper for Distributed Coordination.
