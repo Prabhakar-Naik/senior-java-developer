@@ -846,9 +846,34 @@ Hash partitioning: Data is divided based on a hash function applied to a column 
 Composite partitioning: A combination of different partitioning methods (e.g., range-hash partitioning).
 <h3>Example:</h3>
 Consider a table storing customer orders. It can be partitioned by order date (range partitioning) into monthly partitions. Queries for orders within a specific month will only need to scan the relevant partition.
+<h2>2. Sharding</h2>
+<h3>Definition:</h3> Sharding (also known as horizontal partitioning) involves dividing a database into smaller, independent parts called shards. Each shard contains a subset of the data and resides on a separate database server.
+<h3>Purpose:</h3> Scale horizontally: Sharding distributes data and workload across multiple servers, allowing the database to handle more data and traffic.<br>
+Improve performance: By distributing the load, sharding can reduce query latency and improve overall performance.<br>
+Increase availability: If one shard goes down, other shards remain operational, minimizing downtime.
+<h3>Sharding Key:</h3>A sharding key is a column or set of columns that determines how data is distributed across shards. The sharding key should be chosen carefully to ensure even data distribution and minimize hot spots.
+<h3>Example:</h3>
+A social media database can be sharded based on user ID. All data for users with IDs in a certain range are stored in one shard, while data for users with IDs in another range are stored in a different shard.
 
+<h2>3. Key Differences</h2>
+
+```
+  Feature                       Partitioning                            Sharding
+Data Location                Same database instance             Different database servers
+Purpose                 Improve performance and manageability        Scale horizontally
+Scope                        Logical division of data            Physical division of data
+Distribution                Data within the same server         Data across multiple servers
+```
+<h2>4. Relationship</h2>
+Sharding and partitioning can be used together. A database can be sharded across multiple servers, and each shard can be further partitioned internally.<br>
+Sharding is a higher-level concept that involves distributing data across multiple systems, while partitioning is a lower-level concept that involves dividing data within a single system.
+<h2>5. Choosing Between Them</h2>
+Use partitioning to improve the performance and manageability of a large table within a single database server.
+Use sharding to scale a database horizontally and distribute data and workload across multiple servers.
 
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
+
+
 # 14. Zookeeper for Distributed Coordination.
 # 15. Consensus Algorithms (Paxos, Raft).
 # 16. Distributed Locks (Zookeeper, Redis).
