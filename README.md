@@ -825,6 +825,12 @@ Log processing<br>
 Search indexing<br>
 More Details: <a href="https://aws.amazon.com/what-is/apache-hbase/">Document</a>
 
+<h3>Choosing the Right Database</h3>
+The choice of which distributed database to use depends on your specific requirements:<br>
+Cassandra: Best for applications that require high availability, scalability, and fast writes, such as time-series data, logging, and IoT.<br>
+MongoDB: Best for applications that need a flexible data model, rich query capabilities, and ease of use, such as content management, web applications, and e-commerce.<br>
+HBase: Best for applications that require fast, random access to large amounts of data and tight integration with Hadoop, such as real-time data processing, analytics, and log processing.
+
 # 12. Data Sharding and Partitioning.
 # 13. Caching Mechanisms (Redis, Memcached, Ehcache).
 # 14. Zookeeper for Distributed Coordination.
