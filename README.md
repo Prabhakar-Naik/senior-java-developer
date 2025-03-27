@@ -1001,7 +1001,7 @@ public class EhcacheExample {
 <h3>Comparison</h3>
 
 ```
-  Feature        	            Redis	                                  Memcached	                      Ehcache
+  Feature        	            Redis	                         Memcached	                      Ehcache
 Data Structure              Rich data structures                    Simple key-value            Simple key-value
 Persistence                    Yes                                       No                         Optional
 Memory Management           Uses virtual memory                      LRU eviction            Configurable eviction policies
