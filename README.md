@@ -1001,12 +1001,12 @@ public class EhcacheExample {
 <h3>Comparison</h3>
 
 ```
-  Feature        	            Redis	                          Memcached	            Ehcache
-Data Structure          Rich data structures               Simple key-value      Simple key-value
-Persistence                    Yes                               No                 Optional
-Memory Management        Uses virtual memory                LRU eviction      Configurable eviction policies
-Clustering                     Yes                               Yes                  Yes
-Use Cases          Versatile, caching, message broker, etc.  Simple caching   Java caching, Hibernate cache
+  Feature        	            Redis	                                  Memcached	                      Ehcache
+Data Structure              Rich data structures                    Simple key-value            Simple key-value
+Persistence                    Yes                                       No                         Optional
+Memory Management           Uses virtual memory                      LRU eviction            Configurable eviction policies
+Clustering                         Yes                                   Yes                         Yes
+Use Cases            Versatile, caching, message broker, etc.        Simple caching           Java caching, Hibernate cache
 ```
 <h3>Choosing the Right Caching Mechanism</h3>
 Redis: Choose Redis if you need a versatile data store with advanced features like data structures, persistence, and pub/sub.<br>
