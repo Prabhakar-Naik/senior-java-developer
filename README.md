@@ -1059,8 +1059,71 @@ Apache Cassandra: ZooKeeper is used to manage cluster membership and coordinate 
 Service Discovery: ZooKeeper can be used to implement service discovery, allowing services to register themselves and clients to discover available services.<br>
 Distributed Databases: ZooKeeper is used in distributed databases like HBase to coordinate servers, manage metadata, and ensure consistency.
 
-
 # 15. Consensus Algorithms (Paxos, Raft).
+In distributed systems, achieving consensus among multiple nodes on a single value or state is a fundamental challenge. Consensus algorithms solve this problem, enabling systems to maintain consistency and fault tolerance. Two of the most influential consensus algorithms are Paxos and Raft.
+<h2>1. The Consensus Problem</h2>
+The consensus problem involves multiple nodes in a distributed system trying to agree on a single decision, even in the presence of failures (e.g., node crashes, network delays).
+<h3>A consensus algorithm must satisfy the following properties:</h3>
+Agreement: All correct nodes eventually agree on the same value.<br>
+Integrity: If all nodes are correct, then they can only agree on a value that was proposed by some node.<br>
+Termination: All correct nodes eventually reach a decision.
+<h2>2. Paxos</h2>
+Description: Paxos is a family of consensus algorithms first introduced by Leslie Lamport in 1990. It is known for its complexity and difficulty in understanding and implementing.<br>
+Roles: Paxos involves three types of roles:<br>
+Proposer: Proposes a value to be agreed upon.<br>
+Acceptor: Votes on the proposed values.<br>
+Learner: Learns the agreed-upon value.
+<h3>Basic Paxos Algorithm (for a single decision):</h3>
+<h4>Phase 1 (Prepare):</h4>
+The proposer selects a proposal number n and sends a prepare request with n to all acceptors.<br>
+If an acceptor receives a prepare request with n greater than any proposal number it has seen before, it promises to not accept any proposal with a number less than n and responds with the highest-numbered proposal it has accepted so far (if any).
+<h4>Phase 2 (Accept):</h4>
+If the proposer receives responses from a majority of acceptors, it selects a value v. If any acceptor returned a previously accepted value, the proposer chooses the value with the highest proposal number. Otherwise, it chooses its own proposed value.<br>
+The proposer sends an accept request with proposal number n and value v to the acceptors.<br>
+An acceptor accepts a proposal if it has not promised to reject it (i.e., if the proposal number n is greater than or equal to the highest proposal number it has seen). It then stores the proposal number and value.
+<h4>Learning the Value:</h4>
+Learners learn about accepted values. This can be done through various mechanisms, such as having acceptors send notifications to learners or having a designated learner collect accepted values.
+<h3>Challenges:</h3>
+Paxos is notoriously difficult to understand and implement correctly.<br>
+The basic Paxos algorithm only describes agreement on a single value. For a sequence of decisions (as needed in a distributed system), a more complex variant like Multi-Paxos is required.<Br>
+Multi-Paxos involves electing a leader to propose a sequence of values, which adds further complexity.
+<h2>3. Raft</h2>
+Description: Raft is a consensus algorithm designed to be easier to understand than Paxos. It achieves consensus through leader election, log replication, and safety mechanisms.<br>
+Roles: Raft defines three roles:<br>
+Leader: Handles all client requests, replicates log entries to followers, and determines when it is safe to commit log entries.<br>
+Follower: Passively receives log entries from the leader and responds to its requests.<br>
+Candidate: Used to elect a new leader.
+<h3>Raft Algorithm:</h3>
+<h4>Leader Election:</h4>
+Raft divides time into terms. Each term begins with a leader election.<br>
+If a follower receives no communication from a leader for a period called the election timeout, it becomes a candidate and starts a new election.<br>
+The candidate sends RequestVote RPCs to other nodes.<br>
+A node votes for a candidate if it has not already voted in that term and its own log is no more up-to-date than the candidate's log.<br>
+If a candidate receives votes from a majority of nodes, it becomes the new leader.
+<h4>Log Replication:</h4>
+The leader receives client requests and appends them as new entries to its log.<br>
+The leader sends AppendEntries RPCs to followers to replicate the log entries.<br>
+Followers append the new entries to their logs.
+<h4>Safety and Commit:</h4>
+A log entry is considered committed when it is safely stored on a majority of servers.<br>
+Committed log entries are applied to the state machines of the servers.<br>
+Raft ensures that all committed entries are eventually present in the logs of all correct servers and that log entries are consistent across servers.
+<h3>Advantages:</h3>
+Raft is designed to be more understandable than Paxos.<br>
+It provides a clear separation of concerns with leader election, log replication, and safety.<br>
+It offers a complete algorithm for a practical distributed system.
+<h2>4. Comparison</h2>
+
+```
+Feature                                Paxos                                  Raf
+Complexity                Difficult to understand and implement        Easier to understand and implement
+Roles                     Proposer, Acceptor, Learner                  Leader, Follower, Candidate
+Approach                  Complex, multi-phase                         Simpler, based on leader election and log replication
+Use Cases                 Distributed consensus                        Distributed systems, log management, database replication
+```
+<h2>5. Choosing a Consensus Algorithm</h2>
+Paxos: While highly influential, Paxos is often avoided in practice due to its complexity. It is more of a theoretical foundation.<br>
+Raft: Raft is generally preferred for new distributed systems due to its clarity and completeness. It is used in many popular systems like etcd, Consul, and Kafka.
 
 # 16. Distributed Locks (Zookeeper, Redis).
 # 17. Spring Boot and Spring Cloud for Microservices.
