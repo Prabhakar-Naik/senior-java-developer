@@ -950,10 +950,74 @@ public class MemcachedExample {
     }
 }
 ```
+<h2>3. Ehcache</h2>
+Description: Ehcache is an open-source, Java-based cache that can be used as a general-purpose cache or as a second-level cache for Hibernate.
+<h3>Key Features:</h3>
+In-memory and disk storage: Supports storing data in memory and on disk.<br>
+Various eviction policies: Supports various eviction policies, including LRU, LFU, and FIFO.<br>
+Cache listeners: Allows you to be notified when cache events occur.<br>
+Clustering: Supports distributed caching with peer-to-peer or client-server topologies.<br>
+Write-through and write-behind caching: Supports different caching strategies.
+<h3>Use Cases:</h3>
+Hibernate second-level cache<br>
+Caching frequently accessed data in Java applications<br>
+Web application caching<br>
+Distributed caching
+<h3>Example:</h3>
 
+```
+// Ehcache example
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.CacheManagerBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+
+public class EhcacheExample {
+    public static void main(String[] args) {
+        // Create a cache manager
+        CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+                .withCache("myCache",
+                        CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                                ResourcePoolsBuilder.heap(100)) // 100 entries max
+                        .build())
+                .build(true);
+
+        // Get the cache
+        Cache<Long, String> myCache = cacheManager.getCache("myCache", Long.class, String.class);
+
+        // Put a key-value pair in the cache
+        myCache.put(1L, "myValue");
+
+        // Get the value by key
+        String value = myCache.get(1L);
+        System.out.println("Value: " + value); // Output: Value: myValue
+
+        // Close the cache manager
+        cacheManager.close();
+    }
+}
+```
+<h3>Comparison</h3>
+
+```
+  Feature        	            Redis	                          Memcached	            Ehcache
+Data Structure          Rich data structures               Simple key-value      Simple key-value
+Persistence                    Yes                               No                 Optional
+Memory Management        Uses virtual memory                LRU eviction      Configurable eviction policies
+Clustering                     Yes                               Yes                  Yes
+Use Cases          Versatile, caching, message broker, etc.  Simple caching   Java caching, Hibernate cache
+```
+<h3>Choosing the Right Caching Mechanism</h3>
+Redis: Choose Redis if you need a versatile data store with advanced features like data structures, persistence, and pub/sub.<br>
+Memcached: Choose Memcached for simple, high-performance caching of frequently accessed data with minimal overhead.<br>
+Ehcache: Choose Ehcache if you need a Java-based caching solution with flexible storage options and integration with Hibernate.
 
 # 14. Zookeeper for Distributed Coordination.
+
+
 # 15. Consensus Algorithms (Paxos, Raft).
+
 # 16. Distributed Locks (Zookeeper, Redis).
 # 17. Spring Boot and Spring Cloud for Microservices.
 # 18. Service Discovery (Consul, Eureka, Kubernetes).
