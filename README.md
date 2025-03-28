@@ -1126,6 +1126,23 @@ Paxos: While highly influential, Paxos is often avoided in practice due to its c
 Raft: Raft is generally preferred for new distributed systems due to its clarity and completeness. It is used in many popular systems like etcd, Consul, and Kafka.
 
 # 16. Distributed Locks (Zookeeper, Redis).
+Distributed locks are a crucial mechanism for coordinating access to shared resources in a distributed system. They ensure that only one process or node can access a resource at any given time, preventing data corruption and race conditions. ZooKeeper and Redis are two popular technologies that can be used to implement distributed locks.
+<h2>1. Distributed Lock Requirements</h2>
+A distributed lock implementation should satisfy the following requirements:<br>
+Mutual Exclusion: Only one process can hold the lock at any given time.<br>
+Fail-safe: The lock should be released even if the process holding it crashes.<br>
+Avoid Deadlock: The system should not enter a state where processes are indefinitely waiting for each other to release locks.<br>
+Fault Tolerance: The lock mechanism should be resilient to failures of individual nodes.
+<h2>2. ZooKeeper for Distributed Locks</h2>
+ZooKeeper is a distributed coordination service that provides a reliable way to implement distributed locks. It offers a hierarchical namespace of data registers (znodes), which can be used to coordinate processes.
+<h3>Lock Implementation with ZooKeeper:</h3>
+<h4>Create an Ephemeral Sequential Znode:</h4> A process wanting to acquire a lock creates an ephemeral sequential znode under a specific lock path (e.g., /locks/mylock-). The ephemeral property ensures that the lock is automatically released if the process crashes. The sequential property ensures that each lock request has a unique sequence number.
+<h4>Check for the Lowest Sequence Number:</h4> The process then retrieves the list of children znodes under the lock path and checks if its znode has the lowest sequence number.
+<h4>Acquire the Lock:</h4> If the process's znode has the lowest sequence number, it has acquired the lock.
+<h4>Wait for Notification:</h4> If the process's znode does not have the lowest sequence number, it sets a watch on the znode with the next lowest sequence number. When that znode is deleted (i.e., the process holding the lock releases it or crashes), the waiting process is notified and can try to acquire the lock again by repeating steps 2 and 3.
+<h4>Release the Lock:</h4> When a process is finished with the shared resource, it deletes its znode, releasing the lock.
+
+
 # 17. Spring Boot and Spring Cloud for Microservices.
 # 18. Service Discovery (Consul, Eureka, Kubernetes).
 # 19. API Gateways (Zuul, NGINX, Spring Cloud Gateway).
