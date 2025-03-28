@@ -1141,6 +1141,25 @@ ZooKeeper is a distributed coordination service that provides a reliable way to 
 <h4>Acquire the Lock:</h4> If the process's znode has the lowest sequence number, it has acquired the lock.
 <h4>Wait for Notification:</h4> If the process's znode does not have the lowest sequence number, it sets a watch on the znode with the next lowest sequence number. When that znode is deleted (i.e., the process holding the lock releases it or crashes), the waiting process is notified and can try to acquire the lock again by repeating steps 2 and 3.
 <h4>Release the Lock:</h4> When a process is finished with the shared resource, it deletes its znode, releasing the lock.
+<h3>Advantages of ZooKeeper Locks:</h3>
+<h4>Fault-tolerant:</h4> ZooKeeper is replicated, so the lock service remains available even if some servers fail.
+<h4>Avoids deadlock:</h4> The use of ephemeral znodes ensures that locks are automatically released when a process crashes.
+<h4>Strong consistency:</h4> ZooKeeper provides strong consistency guarantees, ensuring that lock acquisition is serialized correctly.
+<h3>Disadvantages of ZooKeeper Locks:</h3>
+<h4>Performance overhead:</h4> ZooKeeper involves multiple network round trips for each lock acquisition, which can impact performance in high-contention scenarios.
+<h4>Complexity:</h4> Implementing distributed locks with ZooKeeper requires careful handling of znodes, watches, and potential race conditions.
+<h2>3. Redis for Distributed Locks</h2>
+Redis is an in-memory data store that can also be used to implement distributed locks. Redis offers atomic operations and expiration, which are essential for lock management.
+<h3>Lock Implementation with Redis:</h3>
+Use SETNX to Acquire the Lock: A process tries to acquire the lock by using the SETNX (Set if Not Exists) command. The key represents the lock name, and the value is a unique identifier (e.g., a UUID) for the process holding the lock. If the command returns 1 (true), the process has acquired the lock. If it returns 0 (false), the lock is already held by another process.<br>
+Set Expiration for the Lock: The process also sets an expiration time for the lock using the EXPIRE command. This ensures that the lock is automatically released after a certain period, even if the process holding it crashes.<br>
+Check Lock Ownership and Release: To release the lock, the process uses a Lua script to atomically check if it is still the owner of the lock (by comparing the value with its unique identifier) and, if so, delete the key. This prevents releasing a lock that has been acquired by another process.
+<h3>Advantages of Redis Locks:</h3>
+Performance: Redis is very fast, making lock acquisition and release operations highly performant.<br>
+Simplicity: Implementing distributed locks with Redis is relatively simple compared to ZooKeeper.
+<h3>Disadvantages of Redis Locks:</h3>
+Not fully fault-tolerant: If the Redis master node fails before the lock acquisition is replicated to the slave nodes, a new master can be elected, and the lock may be granted to multiple processes (split-brain problem). However, Redis provides mechanisms like Redis Sentinel and Redis Cluster to mitigate this risk.<br>
+Potential for liveliness issues: If a process holding a lock crashes or becomes unresponsive before setting the expiration, the lock may remain held indefinitely, causing a denial of service.
 
 
 # 17. Spring Boot and Spring Cloud for Microservices.
