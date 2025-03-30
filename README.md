@@ -1374,10 +1374,34 @@ Adds complexity to the system<br>
 Requires managing a separate infrastructure<br>
 Not ideal for simple request/response scenarios
 
-
-
-
 # 21. Circuit Breakers and Retry Patterns (Hystrix, Resillience4j).
+In distributed systems, failures are inevitable. Circuit breakers and retry patterns are essential tools for building resilient and fault-tolerant applications. They prevent cascading failures and improve the stability of microservices architectures.
+<h2>1. Retry Pattern</h2>
+<h3>Description:</h3> The retry pattern involves retrying a failed operation a certain number of times, with a delay between each attempt. This can help to handle transient faults, such as network glitches or temporary service outages.
+<h3>Implementation:</h3>
+The client makes a request to a service.<br>
+If the request fails, the client waits for a specified delay.<br>
+The client retries the request.<br>
+This process repeats until the request succeeds or the maximum number of retries is reached.
+<h3>Considerations:</h3>
+Retry interval: The delay between retries should be carefully chosen. A fixed delay may not be suitable for all situations.<br>
+Maximum retries: It's important to limit the number of retries to prevent excessive delays and resource consumption.<br>
+Idempotency: Retried operations should ideally be idempotent, meaning that they have the same effect whether they are performed once or multiple times.<br>
+Backoff strategy: Instead of a fixed delay, a backoff strategy (e.g., exponential backoff) can be used, where the delay increases with each retry.
+<h2>2. Circuit Breaker Pattern</h2>
+<h3>Description:</h3>The circuit breaker pattern is inspired by electrical circuit breakers. It prevents an application from repeatedly trying to access a service that is unavailable or experiencing high latency.
+<h3>States:</h3>
+Closed: The circuit breaker allows requests to pass through to the service.<br>
+Open: The circuit breaker blocks requests and immediately returns an error.<br>
+Half-Open: After a timeout, the circuit breaker allows a limited number of test requests to pass through. If these requests are successful, the circuit breaker closes; otherwise, it remains open.
+<h3>How it works:</h3>
+When the failure rate of a service exceeds a predefined threshold, the circuit breaker trips and enters the open state.<br>
+While the circuit breaker is open, requests are not sent to the service. Instead, the client receives an immediate error response (fallback).<br>
+After a timeout period, the circuit breaker enters the half-open state and allows a few test requests to pass through.<br>
+If the test requests are successful, the circuit breaker assumes that the service has recovered and returns to the closed state.<br>
+If the test requests fail, the circuit breaker remains open, and the timeout period is reset.
+
+
 # 22. Load Balancing (NGINX, Kubernetes, Ribbon).
 # 23. Failover Mechanisms.
 # 24. Distributed Transactions (2PC, Saga Pattern).
