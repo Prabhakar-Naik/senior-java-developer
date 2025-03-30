@@ -1400,6 +1400,33 @@ While the circuit breaker is open, requests are not sent to the service. Instead
 After a timeout period, the circuit breaker enters the half-open state and allows a few test requests to pass through.<br>
 If the test requests are successful, the circuit breaker assumes that the service has recovered and returns to the closed state.<br>
 If the test requests fail, the circuit breaker remains open, and the timeout period is reset.
+<h3>Benefits:</h3>
+Prevents cascading failures.<br>
+Improves system responsiveness.<br>
+Allows services to recover without being overwhelmed.
+<h2>3. Hystrix</h2>
+<h3>Description:</h3> Hystrix is a latency and fault tolerance library designed to isolate applications from failing dependencies.
+<h3>Key features:</h3>
+Circuit breaker<br>
+Fallback<br>
+Request collapsing<br>
+Thread pools and semaphores<br>
+Monitoring
+<h3>Note:</h3> Hystrix is no longer actively developed.
+<h2>4. Resilience4j</h2>
+<h3>Description:</h3> Resilience4j is a fault tolerance library inspired by Hystrix, but designed for modern Java applications and functional programming.
+<h3>Key features:</h3>
+Circuit breaker<br>
+Retry<br>
+Rate limiter<br>
+Bulkhead
+Fallback
+<h3>Pros:</h3>
+Lightweight<br>
+Modular<br>
+Functional<br>
+Easy to use<Br>
+Actively developed
 
 
 # 22. Load Balancing (NGINX, Kubernetes, Ribbon).
