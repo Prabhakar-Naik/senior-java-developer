@@ -1428,8 +1428,34 @@ Functional<br>
 Easy to use<Br>
 Actively developed
 
-
 # 22. Load Balancing (NGINX, Kubernetes, Ribbon).
+Load balancing is the process of distributing network traffic across multiple servers to ensure no single server is overwhelmed. It improves application availability, scalability, and performance. Here's an overview of how NGINX, Kubernetes, and Ribbon handle load balancing:
+<h2>1. NGINX</h2>
+Type: Software load balancer, reverse proxy, web server<br>
+Description: NGINX can distribute incoming traffic across multiple backend servers. It supports various load-balancing algorithms.<br>
+<h3>Key Features:</h3>
+Load balancing algorithms: Round Robin, Least Connections, IP Hash, etc.<br>
+Health checks: Monitors the health of backend servers and removes unhealthy ones from the load-balancing pool.<br>
+Session persistence (sticky sessions): Ensures that requests from the same client are directed to the same server.<br>
+SSL termination: Handles SSL encryption and decryption, offloading this task from backend servers.<br>
+Reverse proxy: Acts as an intermediary between clients and backend servers, improving security and performance.
+<h3>Pros:</h3>
+High performance and scalability<br>
+Versatile and highly configurable<br>
+Can handle various protocols (HTTP, TCP, UDP)
+<h3>Cons:</h3>
+Configuration can be complex<br>
+Requires manual setup and management (unless using a managed service)
+<h2>2. Kubernetes</h2>
+Type: Container orchestration platform<br>
+Description: Kubernetes can distribute traffic across multiple containers (pods) running your application.
+<h3>Key Features:</h3>
+Service discovery: Automatically discovers available pods.<br>
+Load balancing: Distributes traffic across pods using its built-in load balancing.<br>
+Health checks: Monitors the health of pods and restarts unhealthy ones.<br>
+Ingress: Manages external access to services within a Kubernetes cluster, including load balancing, SSL termination, and routing.
+
+
 # 23. Failover Mechanisms.
 # 24. Distributed Transactions (2PC, Saga Pattern).
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
