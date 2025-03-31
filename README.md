@@ -1520,8 +1520,30 @@ Description: Uses the Domain Name System (DNS) to redirect traffic away from a f
 <h3>Mechanism:</h3>
 Multiple DNS records are created for a service, pointing to different servers.<br>
 If a server becomes unavailable, its DNS record is automatically removed or its TTL (Time To Live) is set low, so clients quickly switch to another server.
-
-
+<h3>Pros</h3>
+Simple to implement.<br>
+Wide Compatibility
+<h3>Cons:</h3>
+Slower failover time due to DNS propagation delays.<br>
+Can lead to inconsistent routing, as different clients may receive different DNS records at different times.
+<h2>5. Circuit Breaker</h2>
+Description: A software design pattern that prevents an application from repeatedly trying to access a service that is unavailable.
+<h3>Mechanism:</h3>
+Monitors calls to a service.<br>
+If the number of failures exceeds a threshold, the circuit breaker "opens," and the application immediately returns an error or a cached response, without attempting to call the service.<br>
+After a timeout, the circuit breaker allows a limited number of test calls to the service. If they succeed, the circuit breaker "closes," and normal operations resume.
+<h3>Pros:</h3>
+Improves application resilience<br>
+Prevents cascading failures
+<h3>Cons:</h3>
+Adds complexity to the application code<br>
+Requires careful tuning of thresholds and timeouts
+<h2>Key Considerations for Failover Mechanisms</h2>
+Detection Time: How quickly the system detects a failure.<br>
+Failover Time: How long it takes to switch to the backup system.<br>
+Data Consistency: Ensuring that data is consistent across systems during and after failover.<br>
+Complexity: The complexity of implementing and managing the failover mechanism.<br>
+Cost: The cost of the hardware, software, and maintenance required for the failover solution.
 
 # 24. Distributed Transactions (2PC, Saga Pattern).
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
