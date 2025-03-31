@@ -1483,6 +1483,45 @@ Kubernetes: Provides built-in load balancing for containerized applications with
 Ribbon: A client-side load balancer that gives client services control over how they access other services.  Use it within the Spring ecosystem, but consider migrating to Spring Cloud LoadBalancer.
 
 # 23. Failover Mechanisms.
+Failover mechanisms are designed to automatically switch to a redundant or standby system, component, or network upon the failure or abnormal termination of the primary system. This ensures continuous operation and minimizes downtime. Here's a breakdown of common failover mechanisms:
+<h2>1. Active/Passive (Hot Standby)</h2>
+Description: In an active/passive setup, one system is actively handling traffic, while the other is in standby mode. The standby system is a replica of the active system but does not process any traffic unless a failover occurs.
+<h3>Mechanism:</h3>
+The active system sends heartbeat signals to the passive system.<br>
+If the passive system stops receiving heartbeats within a specified timeout, it assumes the active system has failed and takes over its responsibilities (e.g., IP address, service).
+<h3>Pros:</h3>
+Simple to implement<br>
+Fast failover time (if configured correctly)
+<h3>Cons:</h3>
+Standby system is idle most of the time, wasting resources.
+<h2>2. Active/Active</h2>
+Description: Both systems are active and handle traffic simultaneously. A load balancer distributes traffic between them.
+<h3>Mechanism:</h3>
+The standby system is kept running and synchronized with the active system.<br>
+Upon failover, the warm standby system can quickly take over, possibly with a short ramp-up period.
+<h3>Pros:</h3>
+Faster failover than cold standby<br>
+More resource-efficient than active/passive
+<h3>Cons:</h3>
+More complex than active/passive<br>
+May still experience some downtime during failover
+<h2>4. Cold Standby</h2>
+Description: In a cold standby setup, the backup system is powered off or inactive.  It is kept in a state where it can be brought online if the primary system fails.
+<h3>Mechanism</h3>
+The backup system is powered off and requires manual intervention to bring it online.<br>
+Once the primary system fails, administrators have to start the secondary system, install the necessary software, and restore the latest data backup.
+<h3>Pros</h3>
+Lowest cost, since the backup system consumes no resources while inactive.
+<h3>Cons</h3>
+Longest failover time.<br>
+Increased risk of data loss if the backup is not recent.
+<h2>4. DNS Failover</h2>
+Description: Uses the Domain Name System (DNS) to redirect traffic away from a failed server.
+<h3>Mechanism:</h3>
+Multiple DNS records are created for a service, pointing to different servers.<br>
+If a server becomes unavailable, its DNS record is automatically removed or its TTL (Time To Live) is set low, so clients quickly switch to another server.
+
+
 
 # 24. Distributed Transactions (2PC, Saga Pattern).
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
