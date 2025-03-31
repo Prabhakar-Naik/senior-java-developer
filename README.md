@@ -1561,9 +1561,42 @@ If all RMs voted to commit, the TC sends a "commit" message to all RMs.<br>
 If any RM voted to abort (or if a timeout occurs), the TC sends a "rollback" message to all RMs.<br>
 Each RM then either commits or rolls back the transaction and releases the locks.
 <a href="https://hongilkwon.medium.com/when-to-use-two-phase-commit-in-distributed-transaction-f1296b8c23fd">More Details</a>
-
+<h4>Pros:</h4>
+Provides atomicity: All systems either commit or rollback, ensuring data consistency.
+<h4>Cons:</h4>
+Blocking: RMs hold locks until the final decision is made, which can reduce system concurrency.<br>
+Single Point of Failure: The TC is a single point of failure. If it fails, the system may be blocked.<br>
+Complexity: Implementing 2PC can be complex.
+<h2>2. Saga Pattern</h2>
+Description: The Saga pattern is a fault-tolerant way to manage long-running transactions that can be broken down into a sequence of local transactions. Each local transaction updates data within a single service.
+<h3>Mechanism:</h3>
+Each local transaction has a compensating transaction that can undo the changes made by the local transaction.<br>
+If a local transaction fails, the Saga executes the compensating transactions for all the preceding local transactions to rollback the entire distributed transaction.
+<h3>Coordination:</h3>
+Choreography: Each service involved in the transaction knows about the other services and when to execute its local transaction and compensating transaction, driven by events.<br>
+Orchestration: A central coordinator (the orchestrator) explicitly tells each service when to execute its local transaction and compensating transaction.
+<a href="https://microservices.io/patterns/data/saga.html">More Details</a>
+<h3>Pros:</h3>
+Improved concurrency: Local transactions are short, reducing lock contention.<br>
+No single point of failure: The Saga is decentralized.
+<h3>Cons:</h3>
+Complexity: Implementing Sagas and compensating transactions can be complex.<br>
+Eventual consistency: Data may be inconsistent temporarily until all compensating transactions are completed.<br>
+Difficulty in handling isolation:  Other transactions might see intermediate states.
+<h2>Choosing Between 2PC and Saga</h2>
+<h3>Use 2PC when:</h3>
+You need strong atomicity and isolation.<br>
+Transactions are short-lived.<br>
+Performance is not the top priority.<br>
+Your database or middleware provides 2PC support.
+<h3>Use Saga when:</h3>
+You need high concurrency and availability.<br>
+Transactions are long-running.<br>
+You are working with a microservices architecture.<br>
+Eventual consistency is acceptable.
 
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
+
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
 # 27. Alerting Systems.
 # 28. Authentication and Authorization (OAuth, JWT).
