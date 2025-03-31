@@ -1546,6 +1546,23 @@ Complexity: The complexity of implementing and managing the failover mechanism.<
 Cost: The cost of the hardware, software, and maintenance required for the failover solution.
 
 # 24. Distributed Transactions (2PC, Saga Pattern).
+A distributed transaction is a transaction that affects data in multiple, distributed systems. Ensuring data consistency across these systems is a significant challenge. Two common approaches to managing distributed transactions are the Two-Phase Commit (2PC) protocol and the Saga pattern.
+<h2>1. Two-Phase Commit (2PC)</h2>
+Description: 2PC is a protocol that ensures all participating systems either commit or rollback a transaction together.
+<h3>Participants:</h3>
+Transaction Coordinator (TC): Manages the overall transaction.<br>
+Participants (Resource Managers - RMs): Hold the data and perform the actual operations.
+<h3>Phases:</h3>
+<h4>Phase 1: Prepare Phase</h4>
+The TC sends a "prepare" message to all RMs.<br>
+Each RM does the necessary work to be ready to commit (e.g., locks resources, writes to a transaction log) and replies with either "vote-commit" or "vote-abort."
+<h4>Phase 2: Commit/Rollback Phase</h4>
+If all RMs voted to commit, the TC sends a "commit" message to all RMs.<br>
+If any RM voted to abort (or if a timeout occurs), the TC sends a "rollback" message to all RMs.<br>
+Each RM then either commits or rolls back the transaction and releases the locks.
+<a href="https://hongilkwon.medium.com/when-to-use-two-phase-commit-in-distributed-transaction-f1296b8c23fd">More Details</a>
+
+
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
 # 27. Alerting Systems.
