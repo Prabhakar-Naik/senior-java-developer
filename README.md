@@ -1454,6 +1454,28 @@ Service discovery: Automatically discovers available pods.<br>
 Load balancing: Distributes traffic across pods using its built-in load balancing.<br>
 Health checks: Monitors the health of pods and restarts unhealthy ones.<br>
 Ingress: Manages external access to services within a Kubernetes cluster, including load balancing, SSL termination, and routing.
+<h3>Pros:</h3>
+Automated deployment, scaling, and management of containerized applications<br>
+Built-in load balancing and service discovery<br>
+Highly scalable and resilient
+<h3>Cons:</h3>
+Can be complex to set up and manage<br>
+Requires a good understanding of containerization and orchestration
+<h2>3. Ribbon</h2>
+Type: Client-side load balancer<br>
+Description: Ribbon is a client-side load balancer that is part of the Spring Cloud Netflix suite.  It lets client services control how they access other services.
+<h3>Key Features:</h3>
+Client-side load balancing: The client service is responsible for choosing which server to send the request to.<br>
+Load balancing algorithms: Round Robin, Weighted Round Robin, Random, etc.<br>
+Service discovery integration: Integrates with service discovery tools like Eureka to get a list of available servers.<br>
+Fault tolerance: Supports retries and circuit breakers to handle failures.
+<h3>Pros:</h3>
+Provides more control to the client service<br>
+Can reduce network latency
+<h3>Cons:</h3>
+Adds complexity to the client service<br>
+Can be more difficult to manage than server-side load balancing<br>
+Note: Ribbon is mostly in maintenance mode now, with Spring Cloud LoadBalancer being the recommended replacement in the Spring ecosystem.
 
 
 # 23. Failover Mechanisms.
