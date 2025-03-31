@@ -1476,9 +1476,14 @@ Can reduce network latency
 Adds complexity to the client service<br>
 Can be more difficult to manage than server-side load balancing<br>
 Note: Ribbon is mostly in maintenance mode now, with Spring Cloud LoadBalancer being the recommended replacement in the Spring ecosystem.
-
+<h2>Choosing a Load Balancer</h2>
+The choice of load balancer depends on your specific requirements and architecture:<br>
+NGINX: A good choice for general-purpose load balancing, reverse proxying, and web serving.  It's often used as an ingress controller in Kubernetes.<br>
+Kubernetes: Provides built-in load balancing for containerized applications within a cluster.  Use it when you're deploying and managing applications with Kubernetes.<br>
+Ribbon: A client-side load balancer that gives client services control over how they access other services.  Use it within the Spring ecosystem, but consider migrating to Spring Cloud LoadBalancer.
 
 # 23. Failover Mechanisms.
+
 # 24. Distributed Transactions (2PC, Saga Pattern).
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
