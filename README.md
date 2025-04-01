@@ -1681,12 +1681,121 @@ Time-series database: Efficiently stores and queries metrics.<br>
 PromQL: A flexible query language for analyzing metrics.<br>
 Alerting: Can send notifications based on metric thresholds.
 <h3>Grafana:</h3>
- Rich visualizations: Create dashboards with graphs, charts, and tables.<br>
- Data source support: Works seamlessly with Prometheus.<Br>
- Customizable: Highly configurable and extensible.
+Rich visualizations: Create dashboards with graphs, charts, and tables.<br>
+Data source support: Works seamlessly with Prometheus.<br>
+Customizable: Highly configurable and extensible.
+<h2>Architecture</h2>
+Here's a typical architecture:<br>
+Application: Your application is instrumented with Micrometer to collect metrics.<br>
+Prometheus: Prometheus scrapes metrics from your application's /actuator/prometheus endpoint (or a similar endpoint, depending on configuration).<br>
+Grafana: Grafana queries Prometheus to retrieve the metrics and displays them in dashboards.
+<h3>Step-by-Step Guide</h3>
+<h4>1. Add Micrometer to Your Project</h4>
+<h5>Maven:</h5>
 
+```
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-core</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+```
+<h5>Gradle:</h5>
+
+```
+implementation 'io.micrometer:micrometer-core'
+implementation 'io.micrometer:micrometer-registry-prometheus'
+```
+<h5> Instrument Your Code with Micrometer</h5>
+
+```
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MyController {
+
+    private final Counter myCounter;
+
+    public MyController(MeterRegistry meterRegistry) {
+        this.myCounter = Counter.builder("my_endpoint_hits") // Metric name
+            .description("Number of hits to my endpoint")
+            .tag("method", "GET") // Add tags for dimensions
+            .register(meterRegistry);
+    }
+
+    @GetMapping("/my-endpoint")
+    public String myEndpoint() {
+        myCounter.increment(); // Increment the counter on each request
+        return "Hello, world!";
+    }
+}
+
+// This example creates a counter named my_endpoint_hits that is incremented every time the /my-endpoint is hit.
+// Tags like method allow you to slice and dice your metrics in Prometheus and Grafana.
+```
+
+<h5> Configure Prometheus to Scrape Metrics</h5>
+<h6>prometheus.yml:</h6>
+
+```
+global:
+  scrape_interval:     10s # How often Prometheus collects metrics
+  evaluation_interval: 10s # How often rules are evaluated
+
+scrape_configs:
+  - job_name: 'my-application'
+    metrics_path: '/actuator/prometheus'  #  Spring Boot default
+    static_configs:
+      - targets: ['localhost:8080'] #  Your application's address and port
+```
+
+Make sure the metrics_path matches the endpoint where your application exposes Prometheus metrics.  For Spring Boot, /actuator/prometheus is the default when using micrometer-registry-prometheus.<br>
+The targets specifies where Prometheus can find your application.
+<h3>4. Run Prometheus</h3>
+Using Docker:
+docker docker run -d -p 9090:9090 \ -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml \ prom/prometheus <br>
+* Replace /path/to/prometheus.yml with the actual path to your prometheus.yml file.<br>
+* Prometheus web UI will be available at http://localhost:9090.
+<h3>5. Set Up Grafana</h3>
+Using Docker: docker docker run -d -p 3000:3000 grafana/grafana <br>
+Grafana will be available at http://localhost:3000.  The default login is admin/admin.
+<h3>6. Configure Grafana Data Source</h3>
+In the Grafana UI, go to "Configuration" (gear icon) -> "Data Sources".<br>
+Click "Add data source".<br>
+Select "Prometheus".<br>
+Set the URL to your Prometheus instance (e.g., http://localhost:9090).<br>
+Save.
+<h3>7. Create a Grafana Dashboard</h3>
+In the Grafana UI, click the "+" icon -> "Dashboard".<br>
+Click "Add new panel".<br>
+Choose your Prometheus data source.<br>
+Use PromQL to query your metrics (e.g., rate(my_endpoint_hits_total[5m]) to see the rate of hits to your endpoint over the last 5 minutes).<br>
+Select a visualization (e.g., "Graph").<br>
+Customize the panel (title, axes, etc.).<br>
+Save the dashboard.
+<h3>Example Grafana Query (PromQL)</h3>
+rate(my_endpoint_hits_total{method="GET"}[5m]):  Calculates the rate of GET requests to my_endpoint_hits over the last 5 minutes.<br>
+jvm_memory_used_bytes{area="heap"}:  Shows the amount of heap memory used by the JVM.<br>
+histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{uri="/api/products"}[5m])) by (le)):  Calculates the 99th percentile latency for requests to the /api/products endpoint.
+<h3>Key Metrics to Monitor</h3>
+<h4>Application Metrics:</h4>
+Request rate, error rate, and latency for your application's endpoints.<br>
+Business-specific metrics (e.g., number of orders, signups, etc.).
+<h4>JVM Metrics:</h4>
+Heap memory usage, garbage collection frequency and duration.<br>
+Thread count, CPU usage.
+<h4>System Metrics:</h4>
+CPU usage, memory usage, disk I/O, network traffic.<br>
+By combining Micrometer, Prometheus, and Grafana, you can create a robust monitoring solution that provides valuable insights into your application's performance and behavior.
 
 # 27. Alerting Systems.
+
 # 28. Authentication and Authorization (OAuth, JWT).
 # 29. Encryption (SSL/TLS).
 # 30. Rate Limiting and Throttling.
