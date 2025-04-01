@@ -1621,10 +1621,52 @@ Span Context: Carries information about the trace and span, allowing services to
 <h3>OpenTelemetry:</h3>
 A CNCF project that provides a set of APIs, libraries, and tools for the collection of distributed tracing traces, metrics, and logs. It aims to standardize how telemetry data is generated and handled.
 <h2>3. ELK Stack</h2>
-
-
+Description: The ELK Stack is a popular combination of open-source tools for log management and analysis.
+<h3>Components:</h3>
+Elasticsearch: A distributed search and analytics engine that stores and indexes logs.<br>
+Logstash: A data processing pipeline that collects, parses, and transforms logs.<br>
+Kibana: A visualization tool that allows users to explore and analyze logs using dashboards and queries.<br>
+How it works: Applications send logs to Logstash, which processes them and sends them to Elasticsearch.  Users then use Kibana to visualize and analyze the logs stored in Elasticsearch.
+<h3>Pros:</h3>
+Powerful search and analysis capabilities<br>
+Scalable and fault-tolerant<br>
+Large community and extensive plugin ecosystem
+<h3>Cons:</h3>
+Can be resource-intensive<br>
+Can be complex to set up and manage
+<h2>4. Jaeger</h2>
+Description: Jaeger is an open-source, CNCF project for distributed tracing
+<h3>Features:</h3>
+Distributed context propagation<br>
+Backend for storing and analyzing traces<Br>
+Web UI for visualizing traces<br>
+Architecture: Jaeger agents collect trace data from applications and send it to a Jaeger collector, which processes and stores it in a database.  The Jaeger Query service retrieves traces for visualization in the Jaeger UI.
+<h3>Pros:</h3>
+Open-source and CNCF project<br>
+Good performance and scalability<br>
+Supports OpenTelemetry
+<h3>Cons:</h3>
+Requires setting up and managing Jaeger infrastructure
+<h2>5. Zipkin</h2>
+Description: Zipkin is another popular open-source distributed tracing system.
+<h3>Features:</h3>
+Distributed context propagation<br>
+Backend for storing and analyzing traces<br>
+Web UI for visualizing traces<br>
+Architecture: Similar to Jaeger, applications are instrumented to report timing data to Zipkin collectors.  Collectors track the data and store it in a storage backend.  The Zipkin UI allows users to view traces.
+<h3>Pros:</h3>
+Open-source<br>
+Relatively easy to set up<br>
+Supports OpenTelemetry
+<h3>Cons:</h3>
+UI is less feature-rich compared to Jaeger
+<h3>Choosing the Right Tools</h3>
+ELK Stack: Use for centralized log management, analysis, and visualization.<br>
+Jaeger/Zipkin: Use for distributed tracing to track requests across services and identify performance bottlenecks.  Jaeger is generally preferred for new deployments and has a more active community, and better UI.  Both support OpenTelemetry.<br>
+OpenTelemetry: Integrate into your application code for standardized trace and metric generation, and then use a backend like Jaeger or Zipkin to collect and visualize the data.
 
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
+
 # 27. Alerting Systems.
 # 28. Authentication and Authorization (OAuth, JWT).
 # 29. Encryption (SSL/TLS).
