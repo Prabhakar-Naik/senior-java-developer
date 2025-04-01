@@ -1666,6 +1666,25 @@ Jaeger/Zipkin: Use for distributed tracing to track requests across services and
 OpenTelemetry: Integrate into your application code for standardized trace and metric generation, and then use a backend like Jaeger or Zipkin to collect and visualize the data.
 
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
+This document provides an overview of how to use Prometheus, Grafana, and Micrometer for monitoring and metrics in your applications.
+<h2>Overview</h2>
+Micrometer: A Java-based metrics collection library. It provides a simple facade to instrument your code and send metrics to various monitoring systems.<br>
+Prometheus: A powerful open-source monitoring solution that collects metrics as time-series data. It excels at storing and querying these metrics.<br>
+Grafana: A data visualization tool that allows you to create dashboards and visualize the metrics collected by Prometheus (and other sources).
+<h2>Why Use This Combination?</h2>
+<h3>Micrometer:</h3>
+Vendor-neutral: Supports multiple monitoring systems (Prometheus, Datadog, etc.).<br>
+Easy instrumentation: Simple API to add metrics to your code.<br>
+Built-in metrics: Provides common metrics out-of-the-box (e.g., JVM metrics, HTTP request metrics).
+<h3>Prometheus:</h3>
+Time-series database: Efficiently stores and queries metrics.<br>
+PromQL: A flexible query language for analyzing metrics.<br>
+Alerting: Can send notifications based on metric thresholds.
+<h3>Grafana:</h3>
+ Rich visualizations: Create dashboards with graphs, charts, and tables.<br>
+ Data source support: Works seamlessly with Prometheus.<Br>
+ Customizable: Highly configurable and extensible.
+
 
 # 27. Alerting Systems.
 # 28. Authentication and Authorization (OAuth, JWT).
