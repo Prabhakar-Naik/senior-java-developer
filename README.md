@@ -1596,6 +1596,33 @@ You are working with a microservices architecture.<br>
 Eventual consistency is acceptable.
 
 # 25. Logging and Distributed Tracing (ELK Stack, Jaeger, Zipkin).
+In distributed systems, monitoring and understanding application behavior is crucial. Logging and distributed tracing are essential techniques for achieving this.
+<h2>1. Logging</h2>
+Description: Logging involves recording events that occur within an application, such as errors, warnings, and informational messages.
+<h3>Purpose:</h3>
+Debugging: Helps identify the root cause of problems.<br>
+Monitoring: Provides insights into application performance and health.<br>
+Auditing: Records user activity for security and compliance purposes.
+<h3>Best Practices:</h3>
+Use a structured logging format (e.g., JSON) for easier parsing and analysis.<br>
+Include relevant context in log messages (e.g., timestamp, service name, transaction ID).<br>
+Use appropriate log levels (e.g., DEBUG, INFO, WARN, ERROR) to categorize log messages.<br>
+Centralize logs for easier management and analysis.
+<h2>2. Distributed Tracing</h2>
+Description: Distributed tracing helps track requests as they propagate through multiple services in a distributed system.
+<h3>Purpose:</h3>
+Performance analysis: Identifies bottlenecks and latency issues.<br>
+Fault diagnosis: Pinpoints the service where a failure occurred.<br>
+Understanding system behavior: Visualizes the flow of requests and dependencies between services.
+<h3>Key Concepts:</h3>
+Trace: A complete end-to-end journey of a single request through the system.<br>
+Span: A unit of work within a trace, representing an operation in a specific service.<br>
+Span Context: Carries information about the trace and span, allowing services to correlate their operations.
+<h3>OpenTelemetry:</h3>
+A CNCF project that provides a set of APIs, libraries, and tools for the collection of distributed tracing traces, metrics, and logs. It aims to standardize how telemetry data is generated and handled.
+<h2>3. ELK Stack</h2>
+
+
 
 # 26. Monitoring and Metrics (Prometheus, Grafana, Micrometer).
 # 27. Alerting Systems.
