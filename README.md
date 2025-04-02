@@ -1866,6 +1866,13 @@ Client: The application that wants to access the data.<br>
 Authorization Server: The service that issues access tokens (e.g., Twitter's server).<br>
 Resource Server: The server that hosts the data (e.g., Twitter's API).<br>
 Access Token: A credential that the client uses to access the resource server.
+<h2>JWT (JSON Web Token)</h2>
+Purpose: A compact, URL-safe way to represent claims (statements) to be transferred between two parties.
+<h3>Structure:</h3>
+Header: Contains metadata about the token (e.g., the signing algorithm).<br>
+Payload: Contains the claims (e.g., user ID, expiration time, roles).<br>
+Signature: A cryptographic signature used to verify the integrity of the token.
+<h3>How it Works:</h3>
 
 # 29. Encryption (SSL/TLS).
 # 30. Rate Limiting and Throttling.
