@@ -1873,8 +1873,26 @@ Header: Contains metadata about the token (e.g., the signing algorithm).<br>
 Payload: Contains the claims (e.g., user ID, expiration time, roles).<br>
 Signature: A cryptographic signature used to verify the integrity of the token.
 <h3>How it Works:</h3>
+The server authenticates a user (e.g., using a password).<br>
+The server creates a JWT containing claims about the user (e.g., their ID and roles).<br>
+The server signs the JWT and sends it to the client (e.g., the user's browser).<br>
+The client includes the JWT in subsequent requests to the server.<br>
+The server verifies the JWT's signature and extracts the claims to determine if the user is authorized to perform the requested action.
+<h3>Key Characteristics:</h3>
+Stateless: The server doesn't need to store session information, as the JWT itself contains all the necessary data.<br>
+Self-Contained: The JWT carries all the information needed to verify the user's identity and permissions.<Br>
+Secure: The signature ensures that the JWT cannot be easily tampered with.
+<h2>How OAuth and JWT Work Together</h2>
+<h3>OAuth and JWT can be used together effectively:</h3>
+OAuth can be used for the initial authorization process, where a client application obtains an access token on behalf of a user.<br>
+The access token granted by the authorization server can be a JWT.  This JWT can contain information about the user, the client application, and the granted permissions.
+<h3>Benefits of Combining Them:</h3>
+Enhanced Security: OAuth provides a secure framework for authorization, while JWT provides a secure and compact way to represent tokens.<br>
+Statelessness: Using JWTs as access tokens allows for stateless API design.<br>
+Efficiency: JWTs can reduce the need for the resource server to query the authorization server for every request, as the necessary information is already contained within the token.
 
 # 29. Encryption (SSL/TLS).
+
 # 30. Rate Limiting and Throttling.
 # 31. Apache Kafka for Distributed Streaming.
 # 32. Apache Zookeeper for Coordination.
