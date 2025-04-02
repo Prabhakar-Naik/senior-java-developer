@@ -1741,7 +1741,7 @@ public class MyController {
 ```
 
 <h5> Configure Prometheus to Scrape Metrics</h5>
-<h6>prometheus.yml:</h6>
+<h4>prometheus.yml:</h4>
 
 ```
 global:
