@@ -1834,7 +1834,7 @@ Nagios: A widely used open-source monitoring system with built-in alerting capab
 PagerDuty: A popular incident management platform that provides robust alerting, on-call scheduling, and escalation features.<br>
 OpsGenie: Similar to PagerDuty, OpsGenie offers alerting, on-call management, and incident response capabilities.<br>
 Cloud-Specific Alerting: AWS CloudWatch, Azure Monitor, and Google Cloud Monitoring all provide alerting features for their respective cloud platforms.
-<h6>By implementing a well-designed alerting system, you can significantly improve the reliability, availability, and performance of your applications and infrastructure</h6>
+<h4>By implementing a well-designed alerting system, you can significantly improve the reliability, availability, and performance of your applications and infrastructure</h4>
 
 # 28. Authentication and Authorization (OAuth, JWT).
 # 29. Encryption (SSL/TLS).
