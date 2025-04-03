@@ -1924,7 +1924,18 @@ SEO Boost: Search engines like Google favor HTTPS websites, which can improve se
 
 # 30. Rate Limiting and Throttling.
 APIs are essential for modern web applications, enabling different systems to communicate and exchange data. However, they can be vulnerable to abuse or overload, potentially leading to service disruptions. Rate limiting and throttling are two techniques used to manage API traffic, protect infrastructure, and ensure a smooth experience for all users.
-
+<h2>Rate Limiting</h2>
+Definition: Rate limiting sets a cap on the number of requests a user or client can make to an API within a specific time window.
+<h3>Purpose:</h3>
+Prevent denial-of-service (DoS) attacks.<br>
+Protect API infrastructure from being overwhelmed.<br>
+Ensure fair usage of the API among different users or applications.<br>
+Manage costs associated with API usage.
+<h3>Examples:</h3>
+A user can make 100 requests per minute.<br>
+An application can make 1000 requests per hour.
+<h3>Algorithms:</h3>
+Token Bucket: A bucket holds a certain number of tokens, each representing an allowed request. Tokens are added to the bucket at a specific rate. When a request comes in, a token is removed. If the bucket is empty, the request is denied.
 
 # 31. Apache Kafka for Distributed Streaming.
 # 32. Apache Zookeeper for Coordination.
