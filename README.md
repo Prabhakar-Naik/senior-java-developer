@@ -1935,10 +1935,50 @@ Manage costs associated with API usage.
 A user can make 100 requests per minute.<br>
 An application can make 1000 requests per hour.
 <h3>Algorithms:</h3>
-Token Bucket: A bucket holds a certain number of tokens, each representing an allowed request. Tokens are added to the bucket at a specific rate. When a request comes in, a token is removed. If the bucket is empty, the request is denied.
+Token Bucket: A bucket holds a certain number of tokens, each representing an allowed request. Tokens are added to the bucket at a specific rate. When a request comes in, a token is removed. If the bucket is empty, the request is denied.<br>
+Leaky Bucket: Similar to the token bucket, but requests are processed at a fixed rate, "leaking" out of the bucket. If requests come in faster than they can leak, the bucket overflows, and requests are denied.<br>
+Fixed Window: A time window is defined (e.g., one minute). The number of requests within that window is tracked. Once the limit is reached, subsequent requests are blocked until the window resets.<br>
+Sliding Window: Similar to the fixed window, but it addresses the issue of burst traffic at the window boundaries. It calculates the rate based on the current window and the previous window.
+<h3>HTTP Status Codes:</h3>
+429 Too Many Requests:  The server indicates that the user has sent too many requests in a given amount of time.
+<h2>Throttling</h2>
+Definition: Throttling is a more dynamic approach that controls the rate of requests based on various conditions, such as server load or resource availability.  Instead of simply denying requests, throttling may slow them down or queue them.
+<h3>Purpose:</h3>
+Maintain API availability and performance under heavy load.<br>
+Prevent service degradation.<br>
+Prioritize critical traffic.<br>
+Ensure a smoother experience during traffic spikes.
+<h3>Examples:</h3>
+If the server load is high, delay responses by a few seconds.<br>
+Queue incoming requests and process them at a controlled pace.
+<h3>Techniques:</h3>
+Rate Limiting with Dynamic Adjustment: The rate limit is adjusted in real-time based on server conditions.<br>
+Congestion Control: Algorithms like TCP congestion control can be applied at the application level.<br>
+Quality of Service (QoS): Different priorities are assigned to different types of traffic, ensuring that critical requests are processed even during peak times.
+<h3>HTTP Status Codes:</h3>
+429 Too Many Requests: Can be used, but the server may also use other codes or custom headers to indicate throttling.
+<h3>Rate Limiting:</h3>
+Protecting against abuse (e.g., spamming, DDoS).<br>
+Enforcing usage quotas.<br>
+Preventing excessive consumption of resources by a single user.
+<h3>Throttling:</h3>
+Managing high traffic volumes.<br>
+Ensuring API availability during peak times.<br>
+Maintaining consistent performance.<br>
+Prioritizing critical operations.
+<h2>Best Practices</h2>
+Choose the right algorithm: Select the algorithm that best fits your needs and usage patterns.<br>
+Provide informative error messages: Clearly communicate to the user why their request was limited or throttled and when they can try again.<br>
+Use appropriate HTTP status codes: Use 429 Too Many Requests and other relevant codes to provide feedback to the client.<br>
+Consider API keys: Use API keys to identify and track usage by different clients.<br>
+Implement logging and monitoring: Monitor API traffic to detect potential issues and fine-tune your rate limiting and throttling strategies.<br>
+Test thoroughly: Test your implementation under various load conditions to ensure it performs as expected.
 
 # 31. Apache Kafka for Distributed Streaming.
+
 # 32. Apache Zookeeper for Coordination.
+
+
 # 33. In-memory Data Grids (Hazelcast, Infinispan).
 # 34. Akka for Actor-based Concurrency.
 # 35. Event-Driven Architecture: Event sourcing and CQRS (Command Query Responsibility Segregation).
