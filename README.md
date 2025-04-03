@@ -1916,9 +1916,14 @@ A private key, which is kept secret by the server.<br>
 Symmetric Encryption: Once the shared secret key is established through asymmetric encryption, symmetric encryption takes over for the actual data transfer due to its efficiency.<br>
 HTTPS: Hypertext Transfer Protocol Secure (HTTPS) is the secure version of HTTP.  It uses SSL/TLS to encrypt HTTP traffic, ensuring that data transmitted between a web browser and a website is secure.  You can identify an HTTPS connection by the "https://" prefix in the URL and the padlock icon in the browser's address bar.
 <h3>Importance of SSL/TLS:</h3>
-
+Data Protection: Protects sensitive information such as passwords, credit card numbers, and personal data from being intercepted by malicious actors.<br>
+Authentication: Verifies the identity of the website or server, ensuring that users are communicating with the intended recipient and not a fraudulent imposter.<br>
+Trust: Establishes trust between users and websites, assuring users that their information is being handled securely.<br>
+Compliance: Many regulations and standards (e.g., PCI DSS, HIPAA) require the use of SSL/TLS to protect sensitive data.<br>
+SEO Boost: Search engines like Google favor HTTPS websites, which can improve search engine rankings.
 
 # 30. Rate Limiting and Throttling.
+
 # 31. Apache Kafka for Distributed Streaming.
 # 32. Apache Zookeeper for Coordination.
 # 33. In-memory Data Grids (Hazelcast, Infinispan).
