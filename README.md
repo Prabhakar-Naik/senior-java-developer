@@ -1892,6 +1892,31 @@ Statelessness: Using JWTs as access tokens allows for stateless API design.<br>
 Efficiency: JWTs can reduce the need for the resource server to query the authorization server for every request, as the necessary information is already contained within the token.
 
 # 29. Encryption (SSL/TLS).
+Encryption is the process of converting data into an unreadable format, called ciphertext, so that it can only be understood by someone who has the "key" to decrypt it. It's a fundamental security measure for protecting sensitive information.  SSL/TLS is a specific type of encryption used extensively on the internet.
+<h2>SSL/TLS: Securing Internet Communication</h2>
+SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols that provide secure communication over a network, most commonly the Internet.  TLS is the successor to SSL, and while SSL is still widely recognized, TLS is the more modern and secure protocol.  You'll often see them referred to together as "SSL/TLS."<br>
+Purpose: SSL/TLS creates an encrypted connection between a client (e.g., a web browser) and a server (e.g., a website's server).  This ensures that any data transmitted between them remains confidential and cannot be intercepted or tampered with by third parties.
+<h3>How it Works:</h3>
+<h4>Handshake:</h4>
+The SSL/TLS handshake is the process that initiates a secure connection.  It involves the following steps:<br>
+The client sends a "hello" message to the server, indicating which TLS version and encryption methods it supports.<br>
+The server responds with its own "hello" message, selecting the encryption methods and sending its SSL/TLS certificate.<br>
+The client verifies the server's certificate with a Certificate Authority (CA) to ensure it's legitimate.<br>
+The client and server exchange information to generate a shared secret key.<br>
+Both parties use this shared secret key to encrypt and decrypt the data they transmit.
+<h4>Encryption:</h4>
+Once the secure connection is established, the client and server use symmetric encryption to encrypt the actual data being transmitted.  Symmetric encryption uses the same key for both encryption and decryption, making it faster and more efficient for encrypting large amounts of data.
+<h4>Decryption:</h4>
+The recipient of the encrypted data uses the same shared secret key to decrypt it back into its original, readable format.
+<h3>Key Components:</h3>
+Certificates: Digital certificates are used to verify the identity of the server and establish trust.  An SSL/TLS certificate contains information about the server, including its public key.<br>
+Public Key Cryptography: SSL/TLS uses asymmetric cryptography (public key cryptography) to exchange the shared secret key during the handshake.  This involves a pair of keys:<br>
+A public key, which can be shared with anyone.<br>
+A private key, which is kept secret by the server.<br>
+Symmetric Encryption: Once the shared secret key is established through asymmetric encryption, symmetric encryption takes over for the actual data transfer due to its efficiency.<br>
+HTTPS: Hypertext Transfer Protocol Secure (HTTPS) is the secure version of HTTP.  It uses SSL/TLS to encrypt HTTP traffic, ensuring that data transmitted between a web browser and a website is secure.  You can identify an HTTPS connection by the "https://" prefix in the URL and the padlock icon in the browser's address bar.
+<h3>Importance of SSL/TLS:</h3>
+
 
 # 30. Rate Limiting and Throttling.
 # 31. Apache Kafka for Distributed Streaming.
