@@ -2190,6 +2190,8 @@ Internet of Things (IoT): Managing large numbers of connected devices.<br>
 In summary, Akka provides a powerful and elegant way to build concurrent, distributed, and fault-tolerant applications.  Its Actor Model simplifies concurrency, promotes scalability, and enables the development of resilient systems.
 
 # 35. Event-Driven Architecture: Event sourcing and CQRS (Command Query Responsibility Segregation).
+Event-Driven Architecture (EDA) is a design pattern where applications are structured around the concept of events. An event is a significant change in state. In EDA, components produce events, and other components consume those events to react to the changes.
+
 
 # 36. Cluster Management: Kubernetes for container orchestration.
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
