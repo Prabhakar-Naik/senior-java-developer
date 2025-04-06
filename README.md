@@ -2218,6 +2218,20 @@ New Features: Events can be replayed to derive new data or implement new functio
 Complexity: It adds complexity to the data model and processing.<br>
 Eventual Consistency: Reading the current state requires processing all prior events, which can introduce latency.<br>
 Eventual Consistency: Ensuring that events are processed in the correct order can be challenging in a distributed system.
+<h2>CQRS (Command Query Responsibility Segregation)</h2>
+CQRS is a pattern that separates the write (Command) and read (Query) operations for a data store.
+<h3>How CQRS Works</h3>
+Commands: Operations that change the state of the system are handled by the Command side.<br>
+Queries: Operations that retrieve data from the system are handled by the Query side.<br>
+Separate Models: CQRS often involves using different data models for commands and queries, optimized for their respective operations.
+<h3>Benefits of CQRS</h3>
+Performance: Queries can be optimized without affecting commands, and vice-versa.<br>
+Scalability: Read and write operations can be scaled independently.<br>
+Flexibility: Different data models can be used to suit different needs.<br>
+Security: Fine-grained control over write access.
+<h3>Challenges of CQRS</h3>
+Complexity: Adds architectural complexity.<br>
+Eventual Consistency: The read side is often eventually consistent with the write side.
 
 
 
