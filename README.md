@@ -2204,6 +2204,21 @@ Real-time Processing: Enables immediate reactions to state changes.<br>
 Auditing: Every state change is recorded as an event, providing a complete history.
 <h2>Event Sourcing</h2>
 Event Sourcing is a pattern that persists the state of a business entity (e.g., an order, a customer) as a sequence of events. Instead of storing the current state, we store all the state changes.
+<h3>How Event Sourcing Works</h3>
+Commands: User actions or system triggers result in commands (e.g., "Place Order").<br>
+Events: Commands are validated and, if valid, result in events (e.g., "Order Placed").<br>
+Event Store: Events are persisted in an ordered, immutable log (the Event Store).<br>
+State Reconstruction: The current state of an entity is derived by replaying its events.
+<h3>Benefits of Event Sourcing</h3>
+Complete Audit Log: Every change is recorded, enabling full traceability.<br>
+Temporal Queries: You can query the state of an entity at any point in time.<br>
+Simplified Debugging: Easier to understand how an entity reached its current state.<br>
+New Features: Events can be replayed to derive new data or implement new functionality.
+<h3>Challenges of Event Sourcing</h3>
+Complexity: It adds complexity to the data model and processing.<br>
+Eventual Consistency: Reading the current state requires processing all prior events, which can introduce latency.<br>
+Eventual Consistency: Ensuring that events are processed in the correct order can be challenging in a distributed system.
+
 
 
 # 36. Cluster Management: Kubernetes for container orchestration.
