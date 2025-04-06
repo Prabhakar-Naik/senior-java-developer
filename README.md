@@ -2232,8 +2232,11 @@ Security: Fine-grained control over write access.
 <h3>Challenges of CQRS</h3>
 Complexity: Adds architectural complexity.<br>
 Eventual Consistency: The read side is often eventually consistent with the write side.
-
-
+<h2>CQRS and Event Sourcing</h2>
+CQRS and Event Sourcing are often used together. Event Sourcing can be used to persist data on the command side, while CQRS provides a way to create optimized read models for the query side.<br>
+Command Side: Handles commands, produces events, and updates the Event Store (using Event Sourcing).<br>
+Query Side: Subscribes to events, updates read models, and handles queries.
+<h4>By combining these patterns, you can build highly scalable, performant, and flexible systems.</h4>
 
 # 36. Cluster Management: Kubernetes for container orchestration.
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
