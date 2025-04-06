@@ -2191,6 +2191,19 @@ In summary, Akka provides a powerful and elegant way to build concurrent, distri
 
 # 35. Event-Driven Architecture: Event sourcing and CQRS (Command Query Responsibility Segregation).
 Event-Driven Architecture (EDA) is a design pattern where applications are structured around the concept of events. An event is a significant change in state. In EDA, components produce events, and other components consume those events to react to the changes.
+<h2>Key Concepts of EDA</h2>
+Events: Represent a change in state, e.g., "Order Placed", "User Updated".<br>
+Event Producers: Components that generate events.<br>
+Event Consumers: Components that subscribe to and process events.<br>
+Event Bus/Broker: A message broker (like Kafka, RabbitMQ) that facilitates event delivery.
+<h2>Benefits of EDA</h2>
+Decoupling: Services don't need to know about each other, improving maintainability.<br>
+Scalability: Components can scale independently.<br>
+Flexibility: New components can be added to react to events without affecting existing ones.<br>
+Real-time Processing: Enables immediate reactions to state changes.<br>
+Auditing: Every state change is recorded as an event, providing a complete history.
+<h2>Event Sourcing</h2>
+Event Sourcing is a pattern that persists the state of a business entity (e.g., an order, a customer) as a sequence of events. Instead of storing the current state, we store all the state changes.
 
 
 # 36. Cluster Management: Kubernetes for container orchestration.
