@@ -2247,8 +2247,21 @@ Kubernetes works with a range of container tools, including Docker.
 Containerization packages applications and their dependencies into a single unit, making them portable and consistent across different environments. Kubernetes helps you manage these containers at scale.  Here's why it's so popular:
 <h3>Automation:</h3>
 Automates manual processes involved in deploying and scaling containerized applications.
-
-
+<h3>Scalability:</h3>
+Easily scales applications horizontally by adding or removing containers.
+<h3>Resource Optimization:</h3>
+Efficiently utilizes hardware resources by optimizing container placement.
+<h3>High Availability:</h3>
+Ensures applications are highly available by automatically restarting failed containers and redistributing them across nodes.
+<h3>Service Discovery:</h3>
+Provides mechanisms for containers to find and communicate with each other.
+<h3>Rolling Updates and Rollbacks:</h3>
+Enables seamless application updates with minimal downtime.
+<h2>Kubernetes Architecture</h2>
+A Kubernetes cluster consists of two main components:<br>
+Control Plane: Manages the cluster.<br>
+Nodes: Workers that run the applications.
+<h2>Control Plane Components</h2>
 
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
 # 38. Distributed Data Processing: Frameworks like Apache Spark or Apache Flink for large-scale data processing.
