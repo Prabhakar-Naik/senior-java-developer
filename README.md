@@ -2278,6 +2278,14 @@ Service: An abstraction that defines a logical set of Pods and a policy by which
 Volume: Provides persistent storage for containers, allowing data to survive container restarts.<br>
 Namespace: A way to organize and isolate resources within a cluster, allowing multiple teams to share a cluster.
 <h2>How Kubernetes Works</h2>
+The user defines the desired state of the application (e.g., number of replicas, resource requirements) using YAML or JSON manifests.<br>
+The user submits the manifest to the kube-apiserver.<br>
+The kube-scheduler determines the best node to run the Pods based on the manifest.<br>
+The kubelet on the target node receives the instructions from the kube-apiserver and runs the containers.<br>
+The kube-controller-manager ensures that the actual state of the cluster matches the desired state defined in the manifest.<br>
+kube-proxy manages network routing to the Pods.
+<h3>In Summary</h3>
+Kubernetes simplifies the management of containerized applications at scale.  It provides a robust set of features for automating deployment, scaling, and operations, making it a cornerstone of modern cloud-native infrastructure.
 
 
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
