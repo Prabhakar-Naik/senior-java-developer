@@ -2239,6 +2239,17 @@ Query Side: Subscribes to events, updates read models, and handles queries.
 <h4>By combining these patterns, you can build highly scalable, performant, and flexible systems.</h4>
 
 # 36. Cluster Management: Kubernetes for container orchestration.
+<h2>What is Kubernetes?</h2>
+Kubernetes (also known as k8s) is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.<br>
+It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF).<br>
+Kubernetes works with a range of container tools, including Docker.
+<h2>Why Kubernetes?</h2>
+Containerization packages applications and their dependencies into a single unit, making them portable and consistent across different environments. Kubernetes helps you manage these containers at scale.  Here's why it's so popular:
+<h3>Automation:</h3>
+Automates manual processes involved in deploying and scaling containerized applications.
+
+
+
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
 # 38. Distributed Data Processing: Frameworks like Apache Spark or Apache Flink for large-scale data processing.
 # 39. GraphQL: Alternative to REST for inter-service communication.
