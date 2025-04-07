@@ -2262,6 +2262,23 @@ A Kubernetes cluster consists of two main components:<br>
 Control Plane: Manages the cluster.<br>
 Nodes: Workers that run the applications.
 <h2>Control Plane Components</h2>
+kube-apiserver: The central management interface for the cluster. It exposes the Kubernetes API, used to interact with the cluster.<br>
+etcd: A distributed key-value store that stores the cluster's configuration and state.<br>
+kube-scheduler: Determines which node to run a container on, based on resource requirements and node availability.<br>
+kube-controller-manager: Runs various controllers that manage the state of the cluster, such as replication, nodes, and endpoints.<br>
+cloud-controller-manager: Integrates with cloud providers to manage cloud resources like load balancers and storage.
+<h2>Node Components</h2>
+kubelet: An agent that runs on each node and communicates with the control plane. It manages the containers running on the node.<br>
+kube-proxy: A network proxy that runs on each node and handles network communication for services.<br>
+Container Runtime: Software that runs containers. Docker is a common container runtime, but others exist as well.
+<h2>Key Kubernetes Concepts</h2>
+Pod: The smallest deployable unit in Kubernetes, representing a single instance of a running process. A Pod can contain one or more containers that share resources.<br>
+Deployment: Manages the desired state of a set of Pods, enabling declarative updates and rollbacks.<br>
+Service: An abstraction that defines a logical set of Pods and a policy by which to access them, providing service discovery and load balancing.<br>
+Volume: Provides persistent storage for containers, allowing data to survive container restarts.<br>
+Namespace: A way to organize and isolate resources within a cluster, allowing multiple teams to share a cluster.
+<h2>How Kubernetes Works</h2>
+
 
 # 37. Cloud-Native Development: Using cloud platforms (AWS, GCP, Azure) and serverless computing (AWS Lambda).
 # 38. Distributed Data Processing: Frameworks like Apache Spark or Apache Flink for large-scale data processing.
