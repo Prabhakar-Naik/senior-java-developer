@@ -2347,6 +2347,20 @@ Apache Spark is a unified analytics engine for big data processing, offering hig
 It supports a wide range of workloads, including batch processing, streaming, SQL, machine learning, and graph processing.<br>
 Spark's core component is the Resilient Distributed Dataset (RDD), an immutable, distributed collection of data.<br>
 More recent versions emphasize Datasets and DataFrames, which provide more structure and optimizations.
+<h2>Key Features of Apache Spark</h2>
+In-Memory Processing: Spark performs computations in memory, significantly speeding up processing compared to disk-based systems like Hadoop.<br>
+Unified Platform: Spark provides a single platform for various data processing tasks, reducing the complexity of managing multiple tools.<br>
+Fault Tolerance: Spark's RDDs are fault-tolerant, automatically recovering from node failures.<br>
+Scalability: Spark can scale to handle petabytes of data and run on clusters with thousands of nodes.
+<h3>Rich Ecosystem: Spark has a rich ecosystem of libraries, including:</h3>
+Spark SQL: For SQL queries.<br>
+Spark Streaming: For real-time data stream processing.<br>
+MLlib: For machine learning.<br>
+GraphX: For graph processing.
+<h2>Apache Flink</h2>
+Apache Flink is a stream processing framework for distributed, high-performance computations over both bounded (batch) and unbounded (streaming) data sources.<br>
+While Spark can do streaming, Flink is designed with streaming as its core.<br>
+Flink provides powerful dataflow programming capabilities.
 
 
 # 39. GraphQL: Alternative to REST for inter-service communication.
