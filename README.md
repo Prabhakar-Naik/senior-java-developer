@@ -2361,7 +2361,16 @@ GraphX: For graph processing.
 Apache Flink is a stream processing framework for distributed, high-performance computations over both bounded (batch) and unbounded (streaming) data sources.<br>
 While Spark can do streaming, Flink is designed with streaming as its core.<br>
 Flink provides powerful dataflow programming capabilities.
-
+<h2>Key Features of Apache Flink</h2>
+True Streaming: Flink is a true streaming engine that processes data as a continuous stream of events.<br>
+Exactly-Once Semantics: Flink guarantees that each record is processed exactly once, even in the event of failures.<br>
+High Performance: Flink is designed for low-latency, high-throughput stream processing.<br>
+Versatility: Flink can also handle batch processing, making it suitable for a wide range of data processing applications.<br>
+State Management: Flink provides robust state management capabilities, which are essential for many streaming applications.<br>
+Windowing: Flink supports flexible windowing operations for analyzing data over time.
+<h2>Choosing the Right Framework</h2>
+Choose Spark if you need a unified platform for various data processing workloads, including batch processing, SQL, and machine learning, and if micro-batching is acceptable for your streaming needs.<br>
+Choose Flink if you require a true streaming engine with low latency and exactly-once semantics, particularly for real-time analytics and event-driven applications.
 
 # 39. GraphQL: Alternative to REST for inter-service communication.
 
