@@ -2389,9 +2389,8 @@ Feature	                REST	                                                   
 Approach           Multiple endpoints for different resources            Single endpoint with a flexible query language
 Data Fetching      Over-fetching or under-fetching may occur             Clients request exactly the data they need
 Schema             No built-in schema; documentation may be separate     Strongly typed schema defines available data
-Versioning
-	
-Often requires     creating new endpoints (e.g., /v1/users, /v2/users)   Schema evolution; adding fields without breaking changes is easier
+Versioning	   Often requires creating new endpoints		 Schema evolution; adding fields without breaking changes is easier
+		   (e.g., /v1/users, /v2/users) 
 Error Handling     HTTP status codes for errors                          Uses a data field and an errors array in the response
 Performance        Can be inefficient due to multiple requests           Efficient data retrieval; reduces the number of requests and data size
                    and over/under-fetching
@@ -2399,6 +2398,89 @@ Flexibility        Less flexible; changes on the                         Highly 
                    server may affect clients
 
 ```
+<h2>GraphQL Advantages for Inter-Service Communication</h2>
+Efficiency: GraphQL reduces the amount of data transferred over the network, which is crucial in microservices architectures where services communicate frequently.<br>
+Reduced Network Overhead: By consolidating multiple requests into a single query, GraphQL minimizes network latency and improves performance.<br>
+Flexibility: GraphQL allows each service to expose its data in a way that best suits its domain, while clients can request the specific data they need.<br>
+Strong Typing: The GraphQL schema provides a clear contract between services, ensuring that data exchange is well-defined and less prone to errors.<br>
+Schema Evolution: GraphQL makes it easier to evolve APIs without breaking existing clients.  New fields can be added to the schema without affecting old queries.
+<h3>Example</h3>
+<h3>REST Request:</h3>
+
+```
+GET /users/123
+GET /users/123/posts
+```
+<h3>REST Response:</h3>
+
+```
+// /users/123
+{
+  "id": 123,
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+// /users/123/posts
+[
+  {
+    "id": 1,
+    "title": "Post 1",
+    "content": "Content 1"
+  },
+  {
+    "id": 2,
+    "title": "Post 2",
+    "content": "Content 2"
+  }
+]
+```
+<h3>GraphQL Request:</h3>
+
+```
+query {
+  user(id: 123) {
+    name
+    email
+    posts {
+      title
+      content
+    }
+  }
+}
+```
+<h3>GraphQL Response:</h3>
+
+```
+{
+  "data": {
+    "user": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "posts": [
+        {
+          "title": "Post 1",
+          "content": "Content 1"
+        },
+        {
+          "title": "Post 2",
+          "content": "Content 2"
+        }
+      ]
+    }
+  }
+}
+```
+<h3>When to Use GraphQL</h3>
+Microservices architectures<br>
+Mobile applications<br>
+Complex data requirements<br>
+Evolving APIs
+<h3>When to Use REST</h3>
+Simple APIs<br>
+Resource-oriented applications<br>
+Caching is a primary concern
+<h3>In Summary</h3>
+GraphQL offers significant advantages over REST for inter-service communication, especially in complex, distributed systems. Its flexibility, efficiency, and strong typing make it a compelling choice for building modern, scalable, and maintainable applications. However, REST remains a suitable option for simpler use cases.
 
 # 40. JVM Tuning for Distributed Systems: Memory management and performance tuning in distributed environments.
 
