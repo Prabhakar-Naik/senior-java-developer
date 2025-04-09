@@ -2373,6 +2373,8 @@ Choose Spark if you need a unified platform for various data processing workload
 Choose Flink if you require a true streaming engine with low latency and exactly-once semantics, particularly for real-time analytics and event-driven applications.
 
 # 39. GraphQL: Alternative to REST for inter-service communication.
+REST (Representational State Transfer) has been the dominant architectural style for designing APIs. However, GraphQL has emerged as a powerful alternative, offering more flexibility and efficiency, especially in complex, distributed systems.
+
 
 
 # 40. JVM Tuning for Distributed Systems: Memory management and performance tuning in distributed environments.
