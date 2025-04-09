@@ -2374,7 +2374,22 @@ Choose Flink if you require a true streaming engine with low latency and exactly
 
 # 39. GraphQL: Alternative to REST for inter-service communication.
 REST (Representational State Transfer) has been the dominant architectural style for designing APIs. However, GraphQL has emerged as a powerful alternative, offering more flexibility and efficiency, especially in complex, distributed systems.
+<h2>REST</h2>
+REST is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) to interact with resources.<br>
+It relies on endpoints that represent specific resources (e.g., /users, /users/123).<br>
+Data is typically returned in JSON format.
+<h2>GraphQL</h2>
+GraphQL is a query language and a server-side runtime for executing queries.<br>
+Clients specify exactly the data they need in a single query, and the server returns only that data.<br>
+It uses a schema to define the data types and relationships available in the API.
+<h3>Key Differences</h3>
 
+```
+Feature	                REST	                                                  GraphQL
+Approach           Multiple endpoints for different resources        Single endpoint with a flexible query language
+Data Fetching      Over-fetching or under-fetching may occur         Clients request exactly the data they need
+
+```
 
 
 # 40. JVM Tuning for Distributed Systems: Memory management and performance tuning in distributed environments.
