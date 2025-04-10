@@ -2509,8 +2509,16 @@ Shenandoah: Another low-pause-time collector.
 For most distributed systems, G1 is a good starting point.<br>
 If you need very low latency and have a large heap, consider ZGC or Shenandoah (if using a supported JDK).<br>
 Monitor GC performance and adjust the collector if needed.
-
-
-
-
-
+<h2>2. Heap Size</h2>
+Initial Heap Size (-Xms): The amount of memory allocated to the JVM at startup.<br>
+Maximum Heap Size (-Xmx): The maximum amount of memory the JVM can use.
+<h3>Sizing Considerations:</h3>
+Too small: Can lead to frequent garbage collections and OutOfMemoryErrors.<br>
+Too large: Can increase GC pause times.<br>
+In a distributed system, consider the amount of data each node needs to process and the overhead of inter-node communication.
+<h3>Recommendations:</h3>
+Start with a heap size that is appropriate for your application's data and workload.<br>
+A common practice is to set -Xms and -Xmx to the same value to prevent resizing at runtime.<br>
+Monitor heap usage and adjust the size as needed.<br>
+Leave enough memory for the operating system and other processes.
+<h2>3. GC Tuning</h2>
