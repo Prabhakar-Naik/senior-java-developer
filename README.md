@@ -1,4 +1,4 @@
-# senior-java-developer
+# senior-software-developer
 As a Senior Java Backend Developer, it will be good if you have an understanding of the below 40 topics.
 # 1. CAP Theorem.
 As a Java developer working with distributed systems, understanding the CAP theorem is crucial because it highlights the fundamental trade-offs between Consistency, Availability, and Partition Tolerance.
