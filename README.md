@@ -2535,4 +2535,25 @@ Monitor GC logs to understand GC behavior.<br>
 Experiment with different GC parameters to find the optimal configuration for your workload.<br>
 Use tools like VisualVM, JProfiler, or Garbage Collection Log Analyzer to analyze GC performance.
 <h2>4. CPU Management</h2>
+In a distributed system, ensure that the JVM is not competing excessively for CPU resources with other processes on the same node.<br>
+Use operating system-level tools to monitor CPU usage.<br>
+If necessary, adjust the number of JVM instances per node or use CPU affinity to allocate specific CPUs to JVM processes.<br>
+Be aware of the number of threads your application uses.  An excessive number of threads can lead to CPU contention.
+<h2>5. Thread Pool Sizing</h2>
+Distributed systems often use thread pools for handling requests, processing data, and managing communication.<br>
+If thread pools are too small, requests may be queued, leading to increased latency.<br>
+If thread pools are too large, they can consume excessive resources and lead to context switching overhead.
+<h3>Recommendations:</h3>
+Size thread pools based on the expected workload, the number of available CPU cores, and the nature of the tasks being performed (CPU-bound vs. I/O-bound).<br>
+Monitor thread pool utilization and adjust the size as needed.<br>
+Consider using different thread pools for different types of tasks to optimize resource allocation.
+<h2>6. Network Configuration</h2>
+Network performance is critical in distributed systems.<br>
+Optimize network settings to minimize latency and maximize throughput.
+<h3>Recommendations:</h3>
+Use high-speed networks.<br>
+Configure appropriate TCP settings (e.g., TCP keepalive, buffer sizes).<br>
+Be mindful of serialization and deserialization overhead.  Use efficient serialization libraries.<br>
+Consider using network protocols that are optimized for performance (e.g., non-blocking I/O).
+<h2>Tools for JVM Monitoring and Tuning</h2>
 
