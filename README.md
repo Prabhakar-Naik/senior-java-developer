@@ -2522,3 +2522,17 @@ A common practice is to set -Xms and -Xmx to the same value to prevent resizing 
 Monitor heap usage and adjust the size as needed.<br>
 Leave enough memory for the operating system and other processes.
 <h2>3. GC Tuning</h2>
+<h3>G1 GC Tuning:</h3>
+-XX:MaxGCPauseMillis: Target pause time.  G1 will try to meet this goal.<br>
+-XX:InitiatingHeapOccupancyPercent: The heap occupancy threshold that triggers a concurrent GC cycle.<br>
+-XX:+UseStringDeduplication: Can save memory by deduplicating identical strings.
+<h3>ZGC Tuning:</h3>
+ZGC is designed to work well with its defaults, but the most important setting is the heap size.
+<h3>Shenandoah Tuning:</h3>
+Like ZGC, Shenandoah is designed to work well with its defaults.
+<h3>General GC Tuning Tips:</h3>
+Monitor GC logs to understand GC behavior.<br>
+Experiment with different GC parameters to find the optimal configuration for your workload.<br>
+Use tools like VisualVM, JProfiler, or Garbage Collection Log Analyzer to analyze GC performance.
+<h2>4. CPU Management</h2>
+
